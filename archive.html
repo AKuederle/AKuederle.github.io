@@ -1,5 +1,13 @@
 ---
+layout: page
 title: Archive
+permalink: /archive/
 ---
 
-This is a test
+{% for post in site.categories["posts"] %}
+        <div class="archive">
+          <a class="archive-link" href="{{ post.url | prepend: site.baseurl }}">
+              <span class="archive-meta">{{ post.date | date: "%b %-d, %Y" }}</span> &nbsp;&nbsp;&nbsp;&nbsp; {{ post.title }} {{ post.categories }}
+          </a>
+        </div>
+{% endfor %}
