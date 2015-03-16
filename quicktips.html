@@ -1,0 +1,16 @@
+---
+layout: page
+title: Quicktips
+permalink: /quicktips/
+---
+
+{% for post in site.categories["quicktips"] %}
+    {% for tag in site.test %}
+        <ls>{{ tag[0] }}</ls>
+    {% endfor %}
+    <div class="archive">
+      <a class="archive-link" href="{{ post.url | prepend: site.baseurl }}">
+          <span class="archive-meta">{{ post.date | date: "%b %-d, %Y" }}</span> &nbsp;&nbsp;&nbsp;&nbsp; {{ post.title }} {{ post.categories }}
+      </a>
+    </div>
+{% endfor %}
