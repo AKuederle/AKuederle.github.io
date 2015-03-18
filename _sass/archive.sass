@@ -1,11 +1,13 @@
 body
     .archive
         .archive-link
+            width: 100%
             display: inline-block
             color: $header-link-color
             text-decoration: none
             .archive-meta
                 color: $head-color
         &:hover
-            color: $header-link-hover
+            .archive-link
+                color: $header-link-hover
             background: $preview-hover
