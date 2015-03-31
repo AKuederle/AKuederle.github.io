@@ -1,13 +1,22 @@
 body
-    .archive
-        .archive-link
-            width: 100%
-            display: inline-block
-            color: $header-link-color
-            text-decoration: none
-            .archive-meta
-                color: $head-color
-        &:hover
-            .archive-link
-                color: $header-link-hover
-            background: $preview-hover
+  .archive
+    .archive-link
+      width: 100%
+      display: inline-block
+      color: $header-link-color
+      text-decoration: none
+    .archive-meta
+      color: $head-color
+    &:hover
+      .archive-link
+        color: $header-link-hover
+        background: $preview-hover
+      .tags
+        .tag
+          border-color: $header-link-hover
+    .tags
+      display: inline-block
+      padding-left: 2cm
+      .tag
+        font-size: 12px
+        border-radius: 25px
