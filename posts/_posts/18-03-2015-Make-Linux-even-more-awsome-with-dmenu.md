@@ -77,4 +77,22 @@ Lastly, we need to get the respective path to the chosen repo and open up a term
 xfce4-terminal --working-directory="${gitdic["$choice"]}"
 {% endhighlight %}
 
-Nice! We created a somewhat useful script utilizing Dmenu
+Here is the whole thing in one block (you can also check it out at my [github](http://www.github.com/)):
+
+{% highlight bash %}
+declare -A gitdic
+dirlist=()
+while IFS= read -d $'\0' -r file ; do
+   dir=$(basename "$(dirname "$file")")
+   gitdic["$dir"]="$(dirname "$file")"
+   dirlist+="$dir\n"
+ done < <(find ~ -type d -name .git -print0)
+
+choice=$(echo -e "$dirlist" | dmenu )
+xfce4-terminal --working-directory="${gitdic["$choice"]}"
+{% endhighlight %}
+
+Nice! We created a somewhat useful script utilizing Dmenu! I have this one always right at my fingertip (alias "alt+q") and it is often the first thing I do after firing up my laptop.
+Feel free to use this script, fork it, modify it, and share your awesome ideas with everybody up on [github](http://www.github.com/)!
+
+To learn more about Dmenu, see the following links:
