@@ -97,7 +97,7 @@ Feel free to use this script, fork it, modify it, and share your awesome ideas w
 
 Of course this is not the only thing you can do with Dmenu! In the mentioned git repo you can find another small dmenu script (A small alt+Tab replacment) and searching the web you will stumble over many more.
 
-To learn more about Dmenu in general, see the following links (and of course its man-page:
+To learn more about Dmenu in general, see the following links (and of course its man-page):
 
 Oficial website: [http://tools.suckless.org/dmenu/](http://tools.suckless.org/dmenu/)
 Arch Wiki Entry: [https://wiki.archlinux.org/index.php/Dmenu](https://wiki.archlinux.org/index.php/Dmenu)
