@@ -6,7 +6,7 @@ permalink: /archive/
 
 {% for post in site.categories["posts"] %}
         <div class="archive">
-          <a class="quicktips-link" href="{{ post.url | prepend: site.baseurl }}">
+          <a class="archive-link" href="{{ post.url | prepend: site.baseurl }}">
               <span class="archive-meta">{{ post.date | date: "%b %-d, %Y" }}</span> &nbsp;&nbsp;&nbsp;&nbsp; {{ post.title }}
               <div class="tags">
                 {% for tag in post.tags %}

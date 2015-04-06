@@ -5,8 +5,8 @@ permalink: /quicktips/
 ---
 
 {% for post in site.categories["quicktips"] %}
-    <div class="archive">
-      <a class="archive-link" href="{{ post.url | prepend: site.baseurl }}">
+    <div class="quicktips">
+      <a class="quicktips-link" href="{{ post.url | prepend: site.baseurl }}">
         <div class="tags">
           {% for tag in post.tags %}
             <span class="tag">{{ tag }}</span>
