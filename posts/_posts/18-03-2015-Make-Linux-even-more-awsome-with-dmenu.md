@@ -99,8 +99,8 @@ Of course this is not the only thing you can do with Dmenu! In the mentioned git
 
 To learn more about Dmenu in general, see the following links (and of course its man-page):
 
-Oficial website: [http://tools.suckless.org/dmenu/](http://tools.suckless.org/dmenu/)
+Official website: [http://tools.suckless.org/dmenu/](http://tools.suckless.org/dmenu/)
 Arch Wiki Entry: [https://wiki.archlinux.org/index.php/Dmenu](https://wiki.archlinux.org/index.php/Dmenu)
-Helpfull Arch Forum Thread: [https://bbs.archlinux.org/viewtopic.php?id=95984](https://bbs.archlinux.org/viewtopic.php?id=95984)
+Helpful Arch Forum Thread: [https://bbs.archlinux.org/viewtopic.php?id=95984](https://bbs.archlinux.org/viewtopic.php?id=95984)
 Dmenu Extended Github-Page: [https://github.com/markjones112358/dmenu-extended](https://github.com/markjones112358/dmenu-extended)
 
