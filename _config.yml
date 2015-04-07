@@ -10,3 +10,6 @@ github_username:  AKuederle
 markdown: kramdown
 kramdown:
   input: GFM
+
+gems:
+- jekyll-sitemap
