@@ -32,3 +32,5 @@ import pandas as pd
 
 A speed increase of a whopping factor of 15!!
 So just stop using np.loadtxt and start using pd.read_csv instead. It is much faster and pandas might be package you want to use anyway when dealing with large datasets.
+
+If you want to learn more about the pure awesomeness of the pandas csv-parser check out this excellent [blog post](http://wesmckinney.com/blog/a-new-high-performance-memory-efficient-file-parser-engine-for-pandas/) written by the pandas project creator, Wes McKinney, himself.
