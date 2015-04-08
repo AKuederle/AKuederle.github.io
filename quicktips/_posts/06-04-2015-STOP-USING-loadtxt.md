@@ -3,6 +3,7 @@ title: STOP USING numpy.loadtxt()
 layout: post
 tags: Python
 permalink: stop-using-numpy-loadtxt
+comments: True
 ---
 
 If you are using Python for data analysis you are using numpy is some way and you are probably using the numpy "loadtxt" function, too.

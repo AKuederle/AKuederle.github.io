@@ -3,6 +3,7 @@ layout: post
 title: Make Linux even more awesome with Dmenu
 tags: Workflow Linux Bash
 permalink: awesome-dmenu
+comments: True
 ---
 
 If you are using any modern Linux Distro, it has probably some kind of application launcher already included. To name a few, GNOME Do, Synapse, or xfce4-appfinder all work the same way. You press a button, the launcher appears, and you can quickly select a application to launch by typing its initial letters. In its default configuration Dmenu works no different; however, it can be used to make a quick selection from any given list and not just the default list of applications. Therefore, Dmenu is practical as a custom launcher for nearly everything and even as a way to get a user input for a bash or python script.
