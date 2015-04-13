@@ -1,0 +1,21 @@
+body
+  .quicktips
+    .quicktips-link
+      width: 100%
+      display: inline-block
+      color: $header-link-color
+      text-decoration: none
+    &:hover
+      .quicktips-link
+        color: $header-link-hover
+        background: $preview-hover
+      .tags
+        .tag
+          border-color: $header-link-hover
+    .tags
+      display: inline-block
+      padding-right: 0.5cm
+      padding-left: 0
+      .tag
+        font-size: 12px
+        border-radius: 25px

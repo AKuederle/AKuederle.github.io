@@ -2,6 +2,8 @@
 layout: post
 title: Make Linux even more awesome with Dmenu
 tags: Workflow Linux Bash
+permalink: awesome-dmenu
+comments: True
 ---
 
 If you are using any modern Linux Distro, it has probably some kind of application launcher already included. To name a few, GNOME Do, Synapse, or xfce4-appfinder all work the same way. You press a button, the launcher appears, and you can quickly select a application to launch by typing its initial letters. In its default configuration Dmenu works no different; however, it can be used to make a quick selection from any given list and not just the default list of applications. Therefore, Dmenu is practical as a custom launcher for nearly everything and even as a way to get a user input for a bash or python script.
@@ -97,10 +99,10 @@ Feel free to use this script, fork it, modify it, and share your awesome ideas w
 
 Of course this is not the only thing you can do with Dmenu! In the mentioned git repo you can find another small dmenu script (A small alt+Tab replacment) and searching the web you will stumble over many more.
 
-To learn more about Dmenu in general, see the following links (and of course its man-page:
+To learn more about Dmenu in general, see the following links (and of course its man-page):
 
-Oficial website: [http://tools.suckless.org/dmenu/](http://tools.suckless.org/dmenu/)
+Official website: [http://tools.suckless.org/dmenu/](http://tools.suckless.org/dmenu/)
 Arch Wiki Entry: [https://wiki.archlinux.org/index.php/Dmenu](https://wiki.archlinux.org/index.php/Dmenu)
-Helpfull Arch Forum Thread: [https://bbs.archlinux.org/viewtopic.php?id=95984](https://bbs.archlinux.org/viewtopic.php?id=95984)
+Helpful Arch Forum Thread: [https://bbs.archlinux.org/viewtopic.php?id=95984](https://bbs.archlinux.org/viewtopic.php?id=95984)
 Dmenu Extended Github-Page: [https://github.com/markjones112358/dmenu-extended](https://github.com/markjones112358/dmenu-extended)
 
