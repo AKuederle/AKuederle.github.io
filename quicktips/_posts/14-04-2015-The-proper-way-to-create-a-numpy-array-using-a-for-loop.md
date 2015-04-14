@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The proper way to create a numpy array using a for-loop
+title: The proper way to create a numpy array inside a for-loop
 tags: Python
 permalink: create-numpy-array-with-for-loop
 comments: True
