@@ -78,4 +78,4 @@ for line in data_array:
 
 The key things to keep in mind are:
 1. Nest in the result array (result --> [result])
-2. Initial your empty array with specified size (np.array([ ]) --> np.empty((0, 100)))
+2. Initialize your empty array with specified size (np.array([ ]) --> np.empty((0, 100)))
