@@ -96,6 +96,58 @@ flattend_array = array.flatten() # assigning to a new variable
 array = array.flatten() # overriding the old variable
 {% endhighlight %}
 
+A powerful feature of numpy arrays is the option to use advanced indexing. This means to easily select certain parts of an array.
+The most basic thing to do is selecting a line:
+
+{% highlight Python %}
+sub_array = array[2]
+{% endhighlight %}
+
+This will assign the third line of array to the new sub_array variable. Yeah, your red right! The third line and not, as you may expected, the second. This is a import thing to keep in mind: Counting in Python always start with 0. So the first element of anything countable has always the index 0 (array[0]); and the last element has the index -1.
+
+{% highlight Python %}
+sub_array = array[-2] # select the second last element of the array
+{% endhighlight %}
+
+Selecting multiple lines is as easy:
+
+{% highlight Python %}
+sub_array = array[2:5] # select the elements 3, 4, and 5
+sub_array = array[:-2] # select all elements up to the second last
+{% endhighlight %}
+
+Or some specific lines (note the second pair of parentheses):
+
+{% highlight Python %}
+sub_array = array[[2, 4, -2]] # select the second, the fourth, and the second last element of the array
+{% endhighlight %}
+
+Let's take it to the next dimension (two to begin with). Selecting a single element in a 2D matrix can be done by specifying the line and the row index separated by a comma.
+
+{% highlight Python %}
+element = array_2D[3, 4] # select the element in the 4th row of the 5th column
+{% endhighlight %}
+
+But this is not to selecting a single element. You can easily select multiple elements of your multi-dimensional array using the syntax learned from the first examples.
+
+{% highlight Python %}
+sub_array = array[2,3-9] # select the 4-9 element in the third line
+sub_array = array[2,:-1] # select all elements except the last in the third line
+sub_array = array[:4, :4] # select a 4x4 array in the top left corner of the array
+sub_array = array[:, 4] # select row number 5
+{% endhighlight %}
+
+These selection can be expanded to any dimension and can get far more complex than these examples.
+Here is a short summary of the syntax:
+
+- use a colon to select everything between the number for and after the colon *[3:5]*
+- if no index is specified before or after a colon, it means "from the beginning" or "till the end" of the array (just a colon without any indices translates to "selecting everything"). *[:3], [2:], or [:, 4]*
+- you can use negative index values to select elements starting from the end of the array. *[-3]*
+- use square parentheses ( [] ) with comma-separated indices to select specific elements. *[[2, 7]]*
+- use a comma (,) to separate multiple dimensions. *[2, 6]*
+
+Really try to understand how array slicing works. It can greatly boost your productivity when working with complex data.
+
 Another handy thing to know is, how to generate some generic numpy arrays:
 
 {% highlight Python %}
@@ -105,7 +157,7 @@ array = np.arange(0, 1, 0.1) # Generate 1D array containing all numbers between 
 array = np.linspace(5, 10, 11) # Generate a numpy array containing 11 equally spaced numbers between 5 and 10 (5., 5.5, 6., 6.5, 7., 7.5, 8., 8.5, 9. , 9.5, 10.)
 {% endhighlight %}
 
-The additional parentheses in the first example are not typos. For this specific function the shape of the array must be passed as a tuple-object (inside additional parentheses). However, in the second example we could pass the different dimensions one by one. These small differences in the syntax can be very frustrating at first. Therefore, when ever a function does not behave like you would expect, check its documentation page. Regarding numpy an explanation for every single function can be found on [http://docs.scipy.org/doc/numpy/](http://docs.scipy.org/doc/numpy/).
-A nice Spyder specific trick is to use the build-in object inspector (top right panel). To make it display the documentation of a function while you are typing, go the *Tools/Preferences/Object inspector* and activate "Automatic connection" for the script editor and the Ipython console.
+The additional parentheses in the first example are no typos. For this specific function the shape of the array must be passed as a tuple-object (inside additional parentheses). However, in the second example we could pass the different dimensions one by one. These small differences in the syntax can be very frustrating at first. Therefore, when ever a function does not behave like you would expect, check its documentation page. Regarding numpy an explanation for every single function can be found on [http://docs.scipy.org/doc/numpy/](http://docs.scipy.org/doc/numpy/).
+A nice Spyder specific trick is to use the build-in object inspector (top right panel). Press "Ctrl + i" over a function name or go to *Tools/Preferences/Object inspector* and activate "Automatic connection" for the script editor and the Ipython consolemake to display the documentation of a function while you are typing.
 
 
