@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The proper way to create a numpy array using a for-loop
+title: The proper way to create a numpy array inside a for-loop
 tags: Python
 permalink: create-numpy-array-with-for-loop
 comments: True
@@ -78,4 +78,4 @@ for line in data_array:
 
 The key things to keep in mind are:
 1. Nest in the result array (result --> [result])
-2. Initial your empty array with specified size (np.array([ ]) --> np.empty((0, 100)))
+2. Initialize your empty array with specified size (np.array([ ]) --> np.empty((0, 100)))
