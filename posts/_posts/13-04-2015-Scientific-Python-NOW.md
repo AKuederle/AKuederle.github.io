@@ -132,7 +132,7 @@ But this is not to selecting a single element. You can easily select multiple el
 
 {% highlight Python %}
 sub_array = array[2,3-9] # select the 4-9 element in the third line
-sub_array = array[2,:-1] # select all elements except the last in the third line
+sub_array = array[2,:-1] # select all elements in the third line except the last
 sub_array = array[:4, :4] # select a 4x4 array in the top left corner of the array
 sub_array = array[:, 4] # select row number 5
 {% endhighlight %}
@@ -146,7 +146,7 @@ Here is a short summary of the syntax:
 - use square parentheses ( [] ) with comma-separated indices to select specific elements. *[[2, 7]]*
 - use a comma (,) to separate multiple dimensions. *[2, 6]*
 
-Really try to understand how array slicing works. It can greatly boost your productivity when working with complex data.
+Really try to understand how array slicing works! It can greatly boost your productivity when working with complex data.
 
 Another handy thing to know is, how to generate some generic numpy arrays:
 
@@ -158,6 +158,35 @@ array = np.linspace(5, 10, 11) # Generate a numpy array containing 11 equally sp
 {% endhighlight %}
 
 The additional parentheses in the first example are no typos. For this specific function the shape of the array must be passed as a tuple-object (inside additional parentheses). However, in the second example we could pass the different dimensions one by one. These small differences in the syntax can be very frustrating at first. Therefore, when ever a function does not behave like you would expect, check its documentation page. Regarding numpy an explanation for every single function can be found on [http://docs.scipy.org/doc/numpy/](http://docs.scipy.org/doc/numpy/).
-A nice Spyder specific trick is to use the build-in object inspector (top right panel). Press "Ctrl + i" over a function name or go to *Tools/Preferences/Object inspector* and activate "Automatic connection" for the script editor and the Ipython consolemake to display the documentation of a function while you are typing.
+A nice Spyder specific trick is to use the build-in object inspector (top right panel). Press "Ctrl + i" over a function name or go to *Tools/Preferences/Object inspector* and activate "Automatic connection" for the script editor and the Ipython console to display the documentation of a function while you are typing.
 
 
+*Enough with this example nonsense! I want to have my own data and analyse it! - Ok, Ok... here we go:*
+
+### How to get your own data
+
+Of course if you want to analyse something you need a way to import your data. This is what we ganna talk about in this section.
+Assuming you don't have time to type in all your data by hand, the best way to import it is by using the csv data format. *Csv* means "Comma separated value" and is basically a textfile containing all your data points separated by commas and line-breaks. If your specific dataset is not using a comma as separator, don't worry! You can configure the csv importer to work with any separative character you desire.
+So how to actually do it. Numpy provides a very simple to use function called *loadtxt*, which can load any raw-text datafile and outputs it as a numpy array. To specify your separator use *delimiter* parameter.
+
+{% highlight Python %}
+array = np.loadtxt("path/to/my/data/data.txt", delimiter=",") # load a comma separated file
+{% endhighlight %}
+
+The file extension actually doesn't matter. As long as the file is encoded in a raw-text format (The file can be correctly displayed using Notepad), numpy is able to read it. Another nice thing, you don't has to use the absolute path to your datafile. You can specify the relative path (relative to your script or the working directory of your console) instead. If the file is in the same directory as your script you can simple use: "./myfile.txt"
+
+*Before you ask: You can get the current working directory of your Ipython console by using ```import os; print(os.getcwd())``` and change your working directory by selecting a folder in Spyder`s file explorer (third tab of the top right panel) and afterwards pressing the funny colourful button in the very top right of the Spyder window with the small red arrow pointing at a python symbol.*
+
+If your datafile use to have a header (one or more lines at the beginning which don't contain any data), you can use the *skiprow* parameter to get rid of them:
+
+{% highlight Python %}
+array = np.loadtxt("path/to/my/data/data.txt", skiprow=1) # skip the first line
+{% endhighlight %}
+
+The *unpack* parameter comes in handy quit often, too. Setting *unpack* to ```True``` the file is loaded column-wise instead of line-wise. This allows to use Pythons powerful unpacking feature:
+
+{% highlight Python %}
+column_1, column_2, column_3 = np.loadtxt("path/to/my/data/data.txt", unpack=True) # load a file column-wise into separated variables.
+{% endhighlight %}
+
+*As you may noticed I recently wrote a [blogpost]({% post_url 06-04-2015-STOP-USING-loadtxt %}), explicitly telling you to stop using numpy loadtxt. I still believe that numpy loadtxt is a bad choice, when trying to do time-efficient computing with large sets of data; but to get you started in the fantastic world of scientific Python it's absolute appropriate to use it.*
