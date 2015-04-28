@@ -42,7 +42,7 @@ axins.set_xlim(x1, x2) # apply the x-limits
 axins.set_ylim(y1, y2) # apply the y-limits
 {% endhighlight %}
 
-Our subplot now shows the wanted section of the data and be the right size. If not, you have to go back and modify the zoom factor or the limits.
+Our subplot now shows the wanted section of the data and should be the right size. If not, you have to go back and modify the zoom factor or the limits.
 
 The next step is fully optional, but often you don't want to have the ticks of the small plot displayed. If you need them, just skip the following lines of code.
 
@@ -58,7 +58,7 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
 {% endhighlight %}
 
-This function draws a border around the zoomed area inside the overview and two lines connecting two corners of this box with the respective corners of the inset. The first two parameters are the axes-instances you want to connect. The third and the fourth parameter specify the connected corners (1-4 counter-clockwise); usually, you want to have two opposite corners connected in a way that the lines do not interfere with your plot. The *fc* and *ec* parameter can be used to specify the fill-colour of the box and the lines, respectively. You can pass the colour by name or rgb code. In this specific example a grey-scale value of 0.5 is used for the lines.
+This function draws a border around the zoomed area inside the overview and two lines connecting two corners of this box with the respective corners of the inset. The first two parameters are the axes-instances you want to connect. The third and the fourth parameter specify the connected corners (1-4 counter-clockwise); usually, you want to have two opposite corners connected in a way that the lines do not interfere with your plot. The *fc* and *ec* parameter can be used to specify the fill-colour of the box and the lines, respectively. You can pass the colour by name or rgb-code. In this specific example a grey-scale value of 0.5 is used for the lines.
 
 The final plot will look something like this (depending on your data of course):
 
