@@ -4,15 +4,25 @@ body
     max-width: $page-width
     padding: 10px
     color: $text-color
-    text-size: 20px
-    line-height: 30px
+    font-size: 20px
+    line-height: 1.5
     .post-title
       color: $header-link-color
     .post-content
+    .highlight
+      padding-left: 5px
+      padding-right: 5px
+      padding-top: 5px
+      padding-bottom: 5px
+      color: #333
+      background: rgba(238, 238, 238, 0.5)
+      font-size: 16px
       pre
+        margin: 0
+      code
         overflow: auto
-        background: #EEEEEE
         line-height: 22.5px
+        font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
   .tags
     margin-top: -10px
     .tag
