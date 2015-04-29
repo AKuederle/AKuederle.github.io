@@ -4,10 +4,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Arne Kuederle</title>
- <link href="http://akuederle/atom.xml" rel="self"/>
- <link href="http://akuederle/"/>
+ <link href="http://akuederle.com/atom.xml" rel="self"/>
+ <link href="http://akuederle.com/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://akuederle</id>
+ <id>http://akuederle.com</id>
  <author>
    <name>Eric Jones</name>
  </author>
@@ -15,9 +15,9 @@
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://akuederle{{ post.url }}"/>
+   <link href="http://akuederle.com{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://akuederle{{ post.id }}</id>
+   <id>http://akuederle.com{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
