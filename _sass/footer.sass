@@ -1,9 +1,9 @@
 footer
+  margin: 0 auto
+  background-color: white
+  max-width: $page-width
+  height: 40px
   .social
-    margin: 0 auto
-    background-color: white
-    max-width: $page-width
-    height: 40px
     .github-link
       position: relative
       margin: 5px
@@ -11,13 +11,24 @@ footer
       z-index: 2
       path
         fill: $text-color
-    svg:hover
-      path
-        fill: $header-link-hover
-    .copy
-      color: $text-color
+      svg:hover
+        path
+          fill: $header-link-hover
+    .mailto-link
       position: relative
-      top: 50%
-      font-size: 11px
-      text-align: center
-      z-index: 1
+      margin: 5px
+      float: left
+      z-index: 2
+      #circle
+        fill: $text-color
+      svg:hover
+        #circle
+          fill: $header-link-hover
+
+  .copy
+    color: $text-color
+    position: relative
+    top: 35%
+    font-size: 11px
+    text-align: center
+    z-index: 1
