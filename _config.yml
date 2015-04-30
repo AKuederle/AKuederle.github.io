@@ -14,4 +14,4 @@ kramdown:
 gems:
 - jekyll-sitemap
 
-pygments: true
+highlighter: pygments
