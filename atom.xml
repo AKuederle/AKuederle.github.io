@@ -19,7 +19,7 @@
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>http://akuederle.com{{ post.id }}</id>
    <content type="html">
-    <p>For highlighted code read this article directly on <link href="http://akuederle.com{{ post.url }}">my blog</link>!</p>
+    &lt;p&gt;For highlighted code read this article directly on &lt;a href=&quot;http://akuederle.com{{ post.url }}&quot;&gt;my blog&lt;/a&gt;!&lt;/p&gt;
 
     {{ post.content | xml_escape }}</content>
  </entry>
