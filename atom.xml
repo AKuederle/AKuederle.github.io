@@ -1,0 +1,28 @@
+---
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Arne Kuederle</title>
+ <link href="http://akuederle.com/atom.xml" rel="self"/>
+ <link href="http://akuederle.com/"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>http://akuederle.com</id>
+ <author>
+   <name>Arne Küderle</name>
+ </author>
+
+ {% for post in site.posts %}
+ <entry>
+   <title>{{ post.categories }}: {{ post.title }}</title>
+   <link href="http://akuederle.com{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>http://akuederle.com{{ post.id }}</id>
+   <content type="html">
+    &lt;p&gt;For highlighted code read this article directly on &lt;a href=&quot;http://akuederle.com{{ post.url }}&quot;&gt;my blog&lt;/a&gt;!&lt;/p&gt;
+
+    {{ post.content | xml_escape }}</content>
+ </entry>
+ {% endfor %}
+
+</feed>
