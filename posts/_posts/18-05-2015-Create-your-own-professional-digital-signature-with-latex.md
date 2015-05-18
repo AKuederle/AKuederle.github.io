@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Create your own professional digital Signature and learn about custom LaTex Packages
-tags: Workflow LaTex
+tags: LaTex Workflow 
 permalink: create-professional-signature-with-latex
 comments: True
 ---
@@ -298,9 +298,8 @@ Now we have both styles and we can select them by specifying the mandatory param
 
 Yeah! Coding finished! Check out the full code on [Github](https://github.com/AKuederle/tex_signature/blob/master/mysignature.sty)
 
-Now, let's see our our work in action:
-
-Here we have a small example with some *lorem*
+Now, let's see our work in action!
+Here we have a small example with some *lorem*:
 
 {% highlight latex %}
 \documentclass{article}
