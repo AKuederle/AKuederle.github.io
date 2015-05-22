@@ -16,7 +16,7 @@ Creating something like this in LaTex using a picture of a scanned signature is 
 
 So how do we approach this task?
 
-The best solution seems to be a LaTeX package that provides some kind of command, which allows us to create our signature in one line and without specifying out personal information every time. The problem is, we need to store the "personal" information somewhere. Hardcoding them into the package is no real solution. Therefore, we need some kind of settings file as well. Lastly, we have to implement some options (style, positioning, etc.) the user can select when using the package.
+The best solution seems to be a LaTeX package that provides some kind of command, which allows us to create our signature in one line and without specifying our personal information every time. The problem is, we need to store the "personal" information somewhere. Hardcoding them into the package is no real solution. Therefore, we need some kind of settings file as well. Lastly, we have to implement some options (style, positioning, etc.) the user can select when using the package.
 
 ## Creating the LaTex Packages
 
@@ -159,10 +159,10 @@ Nice! We got everything beside the actual command which produces our signature.
 
 ## Creating the LaTex Command
 
-Creating a custom command is even easier than creating a package. You just need the LaTex commands *\newcommand* or *\renewcommadn* (if you want to redefine a command). The syntax looks like this:
+Creating a custom command is even easier than creating a package. You just need the LaTex commands *\newcommand* or *\renewcommand* (if you want to redefine a command). The syntax looks like this:
 
 {% highlight latex %}
-\newcommand{\myawesomecomand}[< number of parameters >][ default value of optional parameter ]{
+\newcommand{\myawesomecommand}[< number of parameters >][ default value of optional parameter ]{
     my awesome code
 }
 {% endhighlight %}
@@ -357,7 +357,7 @@ And with the "minimal" style without the job:
 Now that we got this awesome little package, we have to find out how to incorporate it in our workflow.
 
 1. Move the package file/folder into your LaTex-Path
-    To locate the LaTex-Path type ```kpsewhich -var-value=TEXMFHOME``` into your console. Then move the package folder into this directory (or any subdirectory of it). Now you should be able to import the package from every LaTex-File on this computer.
+    To locate the LaTex-Path type ```kpsewhich -var-value=TEXMFHOME``` into your console. Inside this folder create the subdirectory *tex/latex/*. Then move the package folder into this directory (or any subdirectory of it). Now you should be able to import the package from every LaTex-File on this computer.
 
 2. Create your own set of signatures
     Create one or more .tex - files inside the package folder. You can name them whatever you want, but I suggest naming the signature-file, you use the most, "default_signature.tex". Then copy all the options from my example above (see "The Settings File") and modify them based on your preferences.
