@@ -2,12 +2,13 @@ body
   .quicktips
     display: table
     border-collapse: separate
-    border-spacing: 0 0.3cm
+    border-spacing: 0 0.1cm
     width: 100%
     .quicktips-link
       display: table-row
       color: $header-link-color
       text-decoration: none
+      padding-bottom: -5px
       &:hover
         color: $header-link-hover
         background: $preview-hover
@@ -17,13 +18,11 @@ body
     .table-cell
       display: table-cell
     .tags
-      padding: 0 0 0 0
-      display: flex
-      flex-direction: column
-      justify-content: center
-      width: 100px
       padding-right: 15px
+      padding-bottom: 5px
+      padding-left: 8px
       .tag
+        width: 60px
         text-align: center
         font-size: 12px
-        border-radius: 25px
+        display: block
