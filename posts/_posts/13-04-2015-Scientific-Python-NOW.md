@@ -6,9 +6,9 @@ permalink: scientific-python-now
 comments: True
 ---
 
-This is a small guide which should get you quickly up and running with analysing and visualising your data using Python. I'm gonna cover everything from setting up your Python environment to analysing your to fitting and visualizing some crazy function to your data. I try to explain everything in a way that no real prior programming skills are needed to follow along. After reading you gonna be able to discover the amazing world of Scientific Python all on your own.
+This is a small guide which should get you quickly up and running with analysing and visualising your data using Python. I'm gonna cover everything from setting up your Python environment, over analysing your data, to fitting some crazy function. I try to explain everything in a way that no real prior programming skills are needed to follow along. After reading, you gonna be able to discover the amazing world of Scientific Python all on your own.
 
-First a brief word about what Python is and why it is a adequate tool to analyse scientific data.
+First a brief word about what Python is and why it is a adequate tool for analysing scientific data.
 
 Python is a very powerful dynamic [object oriented](http://en.wikipedia.org/wiki/Object-oriented_programming) programming language. It is the engine which drives some of your favourite tools; for example Sublime Text, Blender, and even parts of Google and Youtube.
 Modularity allows Python to be used in Web Programming, GUI Development, Software Development, System Administration and of course Scientific and Numerical Computation. The specific Python modules we are interested in today are called Numpy, SciPy, Matplotlib, and Pandas. They transform Python from being just a great programming language to being a data-analysis powerhouse comparable to Matlab.
@@ -76,7 +76,7 @@ Be aware, that ```array * array``` is not a matrix multiplication in the mathema
 np.dot(array, array) # Matrix multiplication
 {% endhighlight %}
 
-*A short word about comments in Python: Whenever you want to write a command inside one of your scripts you use a "#". Everything after this symbol in the same line gets ignored by Python. Usually a comment is used to provide additional information about what a certain part of your script does.*
+*A short word about comments in Python: Whenever you want to write a command inside one of your scripts you use a "#". Everything after this symbol in the same line gets ignored by Python. Usually a comment is used to provide additional information about what a certain part of your script does. Therefore, use them extensively to make everything easy to read and understand.*
 
 We can also do stuff, which is no real math, but interesting from a programming stand point:
 
@@ -103,7 +103,7 @@ The most basic thing to do is selecting a line:
 sub_array = array[2]
 {% endhighlight %}
 
-This will assign the third line of array to the new sub_array variable. Yeah, your red right! The third line and not, as you may expected, the second. This is a import thing to keep in mind: Counting in Python always start with 0. So the first element of anything countable has always the index 0 (array[0]); and the last element has the index -1.
+This will assign the third line of array to the new sub_array variable. Yeah, your red right! The third line and not - as you may expected - the second. This is a import thing to keep in mind: Counting in Python always start with 0. So the first element of anything countable has always the index 0 (array[0]); the last element has the index -1.
 
 {% highlight Python %}
 sub_array = array[-2] # select the second last element of the array
@@ -128,7 +128,7 @@ Let's take it to the next dimension (two to begin with). Selecting a single elem
 element = array_2D[3, 4] # select the element in the 4th row of the 5th column
 {% endhighlight %}
 
-But this is not to selecting a single element. You can easily select multiple elements of your multi-dimensional array using the syntax learned from the first examples.
+But this is not limited to selecting a single element. You can easily select multiple elements of your multi-dimensional array using the syntax learned from the first examples.
 
 {% highlight Python %}
 sub_array = array[2,3-9] # select the 4-9 element in the third line
@@ -166,14 +166,14 @@ A nice Spyder specific trick is to use the build-in object inspector (top right 
 ### How to get your own data
 
 Of course if you want to analyse something you need a way to import your data. This is what we ganna talk about in this section.
-Assuming you don't have time to type in all your data by hand, the best way to import it is by using the csv data format. *Csv* means "Comma separated value" and is basically a textfile containing all your data points separated by commas and line-breaks. If your specific dataset is not using a comma as separator, don't worry! You can configure the csv importer to work with any separative character you desire.
+Assuming you don't have time to type in all your data by hand, the best way to import it is by using the csv data format. *CSV* means "Comma separated value" and is basically a textfile containing all your data points separated by commas and line-breaks. If your specific dataset is not using a comma as separator, don't worry! You can configure the csv importer to work with any separative character you desire.
 So how to actually do it. Numpy provides a very simple to use function called *loadtxt*, which can load any raw-text datafile and outputs it as a numpy array. To specify your separator use *delimiter* parameter.
 
 {% highlight Python %}
 array = np.loadtxt("path/to/my/data/data.txt", delimiter=",") # load a comma separated file
 {% endhighlight %}
 
-The file extension actually doesn't matter. As long as the file is encoded in a raw-text format (The file can be correctly displayed using Notepad), numpy is able to read it. Another nice thing, you don't has to use the absolute path to your datafile. You can specify the relative path (relative to your script or the working directory of your console) instead. If the file is in the same directory as your script you can simple use: "./myfile.txt"
+The file extension actually doesn't matter. As long as the file is encoded in a raw-text format (the file can be correctly displayed using Notepad), numpy is able to read it. Another nice thing, you don't have to use the absolute path to your datafile. You can specify the relative path (relative to your script or the working directory of your console) instead. If the file is in the same directory as your script you can simple use: "./myfile.txt"
 
 *Before you ask: You can get the current working directory of your Ipython console by using ```import os; print(os.getcwd())``` and change your working directory by selecting a folder in Spyder`s file explorer (third tab of the top right panel) and afterwards pressing the funny colourful button in the very top right of the Spyder window with the small red arrow pointing at a python symbol.*
 
@@ -183,10 +183,10 @@ If your datafile use to have a header (one or more lines at the beginning which 
 array = np.loadtxt("path/to/my/data/data.txt", skiprow=1) # skip the first line
 {% endhighlight %}
 
-The *unpack* parameter comes in handy quit often, too. Setting *unpack* to ```True``` the file is loaded column-wise instead of line-wise. This allows to use Pythons powerful unpacking feature:
+The *unpack* parameter comes in handy quite often, too. Setting *unpack* to ```True```, the file is loaded column-wise instead of line-wise. This allows to use Pythons powerful unpacking feature:
 
 {% highlight Python %}
 column_1, column_2, column_3 = np.loadtxt("path/to/my/data/data.txt", unpack=True) # load a file column-wise into separated variables.
 {% endhighlight %}
 
-*As you may noticed I recently wrote a [blogpost]({% post_url 06-04-2015-STOP-USING-loadtxt %}), explicitly telling you to stop using numpy loadtxt. I still believe that numpy loadtxt is a bad choice, when trying to do time-efficient computing with large sets of data; but to get you started in the fantastic world of scientific Python it's absolute appropriate to use it.*
+*As you may noticed I recently wrote a [blogpost]({% post_url 06-04-2015-STOP-USING-loadtxt %}), explicitly telling you to stop using numpy loadtxt. I still believe that numpy loadtxt is a bad choice, when trying to do time-efficient computing with large sets of data; but to get you started in the fantastic world of scientific Python it's absolutely appropriate to use it.*
