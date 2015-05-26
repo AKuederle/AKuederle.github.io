@@ -190,3 +190,34 @@ column_1, column_2, column_3 = np.loadtxt("path/to/my/data/data.txt", unpack=Tru
 {% endhighlight %}
 
 *As you may noticed I recently wrote a [blogpost]({% post_url 06-04-2015-STOP-USING-loadtxt %}), explicitly telling you to stop using numpy loadtxt. I still believe that numpy loadtxt is a bad choice, when trying to do time-efficient computing with large sets of data; but to get you started in the fantastic world of scientific Python it's absolutely appropriate to use it.*
+
+
+Ok, we have a way to import our own data and we know a little bit about how to manipulate our data. But come on... Numbers are boring to look add. Let's make some pretty lines and figures out of all these numbers!
+
+### Plotting your data
+
+As its name has maybe already gave away, we will talk about the matplotlib library in this section.
+Maybe you were confused earlier on when we imported *matplotlib.pyplot* instead of simply *matplotlib*. The pyplot module is part of the matplotlib package and contains all the stuff we need to make beautiful 2D plots (lines, bars, colourmaps, ...). If you want to make more crazy stuff, like 3D plots or simple animation stuff, you need to import other modules of the matplotlib package. But for now, we gonna focus on the 2D library.
+
+*Keep in mind we imported matplotlib.pyplot as plt!*
+
+Ok, we start with a simple plot:
+
+{% highlight Python %}
+x_data = [1, 2, 3, 4] # generate some x-data
+y_data = [2, 4, 6, 8] # generate some y-data
+plt.plot(x_data, y_data) # plot the data
+plt.show() # display the figure
+{% endhighlight %}
+
+Yeah! A line! Let's break down what happened. First we "generated" some data. This data doesn't have to be a numpy array; a simple list of integers or floats will work to. After this we plot the data using the ```plt.plot()``` function. Depending on how many parameters you pass to the function it changes its behaviour. Passing only one parameter, this value is taken as the y-data. Passing two arguments, the first is used as the x-data and the second as the y-data. You can further use an optional third parameter to specify the plot colour and the shape of the markers.
+
+{% highlight Python %}
+plt.plot(x_data, y_data, "r--") # plot a red dashed line
+{% endhighlight %}
+
+To get all the possible values for this optional parameter check the [documentation](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot).
+Before we proceed I want to say a few word about this last line of the plotting example. If your remove the ```plt.show()``` and run the code again, it will probably still work. This is, because inside an Ipython console the interactive plotting mode of matplotlib is on by default. This means, that every plot command you type directly results in figure. This allows you to interactively interact with your plot, since every command directly updates the figure. However, when you creating a complex plot using a script, you should have turned this mode off to prevent some issues. To turn the mode on and off use ```plt.ion()``` and ```plt.ioff()```, respectively.
+This is also a good time to talk about "backends". A backend is basically what matplotlib does after it has calculated how the plot is gonna look like. There are graphical backends, which results in a graphical representation of the plot and there are non-graphical backends, which can be used to store the plot in a certain format. Usually you don't need to mess around with this. The reason, why I'm bringing it up here, is because Ipython adds another very special backend to the equation: the inline plot. This backend only works inside of an Ipython console and results in plots drawn directly to the console window. To activate it type ```%matplotlib inline```; to change back to a secondary window to display your plots type ```%matplotlib qt```. If you are not sure which backend you are using, just try out both and see the difference; when the qt backend is selected the may be displayed in a minimized window. So check your taskbar!
+
+To really master plotting with matplotlib you have to understand the hierarchy of elements a plot consists of.
