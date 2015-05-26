@@ -238,7 +238,7 @@ So, here is what we want to do:
 
 Let's get to work!
 
-Because we want to do some real work and not just play around with the data, it is appropriate to right a real reusable script. Hence, create a new empty script in Spyder and save it in the same folder as the spectral data. You can press F5 to run the script and see its output inside our ipython console. I would also recommend to use the variable explorer after each run to check if everything went as expected.
+Because we want to do some real work and not just play around with the data, it is appropriate to write a real reusable script. Hence, create a new empty script in Spyder and save it in the same folder as the spectral data. You can press F5 to run the script and see its output inside our ipython console. I would also recommend using the variable explorer after each run to check if everything went as expected.
 
 As usual we have to start with importing the the needed modules.
 
@@ -253,7 +253,7 @@ One and two can be solved in one step:
 _, data = np.loadtxt("./spec", unpack=True)
 {% endhighlight %}
 
-We are just using numpy's loadtext function with its unpack parameter. This allows us to parse the the second column to our *data* variable and the first to the *underscore* variable. You could have named this variable waht ever you want, but "_" or names starting with a "_" don't show up in spyder's variable explorer by default; using it keeps everything a little bit cleaner.
+We are just using numpy's loadtext function with its unpack parameter. This allows us to parse the second column to our *data* variable and the first to the *underscore* variable. You could have named this variable what ever you want, but "\_" or names starting with a "\_" don't show up in spyder's variable explorer by default; using them, keeps everything a little bit cleaner.
 
 Now we have to normalise the data. This means we want to define each point relative to the maxima of the spectra. Therefore, we have to divide each data-point by the maxima's value.
 We can get the maxima using the *max()* function. Then, we can simply divide our array by this scalar.
@@ -262,26 +262,27 @@ We can get the maxima using the *max()* function. Then, we can simply divide our
 normalised_data = data/data.max()
 {% endhighlight %}
 
-To create appropriate x-values, we have to know, what our x-axes actually represents. Let's assume, our spectral data was recorded with wavelength in a range from 100 - 1000 nm. Now we can use *np.linspace* to create a new array. We gonna use 250 points to match the length of our data array.
+To create appropriate x-values we have to know what our x-axes actually represents. Let's assume, our spectral data was recorded with wavelengths in a range from 100 - 1000 nm. Now we can use *np.linspace* to create a new array. We gonna use 250 points to match the length of our data array.
 
 {% highlight Python %}
 x_values = np.linspace(100, 1000, 250)
 {% endhighlight %}
 
-Because we are only interested (for now particular reason) in data from index 20 upwards, we have to cut of these first 19 datapoints utilizing the power of array slicing.
+Because we are only interested (just for the porpoise of this tutorial) in  the data from index 20 upwards, we have to cut of these first 19 datapoints utilizing the power of array slicing.
 
 {% highlight Python %}
 normalised_data = normalised_data[19:]
 x_values = x_values[19:]
 {% endhighlight %}
 
-Last thing to do, is plotting the data.
+Last thing to do is plotting the data.
 
 {% highlight Python %}
 plt.plot(x_values, normalised_data)
 {% endhighlight %}
+... And we are done!
 
-If something went wrong, check with the working code on [Github](https://github.com/AKuederle/scipy-tutorial/blob/master/example1.py).
+If something went wrong, check with my code on [Github](https://github.com/AKuederle/scipy-tutorial/blob/master/example1.py).
 
 However, if everything went well, you should end up with the following picture:
 
@@ -289,5 +290,5 @@ However, if everything went well, you should end up with the following picture:
 
 Not particular pretty, but that's all for now. We will start of the next part of this tutorial series by getting into more advanced matplotlib stuff, so we can improve the appearance of this plot.
 
-If there are any problems, or you have specific topics you want me to cover, feel free to comment down below or contact me on any other way.
+If there are any problems, or you have specific topics you want me to cover, feel free to comment down below or contact me in any other way.
 
