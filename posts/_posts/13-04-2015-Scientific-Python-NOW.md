@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Scientific Python NOW!
+title: Scientific Python NOW! (Part 1)
 tags: Python Numpy Matplotlib SciPy
-permalink: scientific-python-now
+permalink: scientific-python-now-1
 comments: True
+date: 26.5.2015
 ---
 
 This is a small guide which should get you quickly up and running with analysing and visualising your data using Python. I'm gonna cover everything from setting up your Python environment, over analysing your data, to fitting some crazy function. I try to explain everything in a way that no real prior programming skills are needed to follow along. After reading, you gonna be able to discover the amazing world of Scientific Python all on your own.
@@ -161,11 +162,11 @@ The additional parentheses in the first example are no typos. For this specific 
 A nice Spyder specific trick is to use the build-in object inspector (top right panel). Press "Ctrl + i" over a function name or go to *Tools/Preferences/Object inspector* and activate "Automatic connection" for the script editor and the Ipython console to display the documentation of a function while you are typing.
 
 
-*Enough with this example nonsense! I want to have my own data and analyse it! - Ok, Ok... here we go:*
+*Enough with this example nonsense! I want to have my own data and analyse it! - Ok, Ok... step by step:*
 
 ### How to get your own data
 
-Of course if you want to analyse something you need a way to import your data. This is what we ganna talk about in this section.
+Of course, if you want to analyse something you need a way to import your data. This is what we ganna talk about in this section.
 Assuming you don't have time to type in all your data by hand, the best way to import it is by using the csv data format. *CSV* means "Comma separated value" and is basically a textfile containing all your data points separated by commas and line-breaks. If your specific dataset is not using a comma as separator, don't worry! You can configure the csv importer to work with any separative character you desire.
 So how to actually do it. Numpy provides a very simple to use function called *loadtxt*, which can load any raw-text datafile and outputs it as a numpy array. To specify your separator use *delimiter* parameter.
 
@@ -192,7 +193,7 @@ column_1, column_2, column_3 = np.loadtxt("path/to/my/data/data.txt", unpack=Tru
 *As you may noticed I recently wrote a [blogpost]({% post_url 06-04-2015-STOP-USING-loadtxt %}), explicitly telling you to stop using numpy loadtxt. I still believe that numpy loadtxt is a bad choice, when trying to do time-efficient computing with large sets of data; but to get you started in the fantastic world of scientific Python it's absolutely appropriate to use it.*
 
 
-Ok, we have a way to import our own data and we know a little bit about how to manipulate our data. But come on... Numbers are boring to look add. Let's make some pretty lines and figures out of all these numbers!
+Ok, we have a way to import our own data and we know a little bit about how to manipulate our data. But come on... Numbers are boring to look add. Let's make some pretty lines and figures out of all these numbers! (Still no real data example, but we getting there, I promise!)
 
 ### Plotting your data
 
@@ -210,14 +211,83 @@ plt.plot(x_data, y_data) # plot the data
 plt.show() # display the figure
 {% endhighlight %}
 
-Yeah! A line! Let's break down what happened. First we "generated" some data. This data doesn't have to be a numpy array; a simple list of integers or floats will work to. After this we plot the data using the ```plt.plot()``` function. Depending on how many parameters you pass to the function it changes its behaviour. Passing only one parameter, this value is taken as the y-data. Passing two arguments, the first is used as the x-data and the second as the y-data. You can further use an optional third parameter to specify the plot colour and the shape of the markers.
+Yeah! A line! Let's break down what happened. First we "generated" some data. This data doesn't have to be a numpy array; a simple list of integers or floats will work to. After this, we plot the data using the ```plt.plot()``` function. Depending on how many parameters you pass to the function it changes its behaviour. Passing only one parameter, this value is taken as the y-data. Passing two arguments, the first is used as the x-data and the second as the y-data. You can further use an optional third parameter to specify the plot colour and the shape of the markers.
 
 {% highlight Python %}
 plt.plot(x_data, y_data, "r--") # plot a red dashed line
 {% endhighlight %}
 
 To get all the possible values for this optional parameter check the [documentation](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot).
-Before we proceed I want to say a few word about this last line of the plotting example. If your remove the ```plt.show()``` and run the code again, it will probably still work. This is, because inside an Ipython console the interactive plotting mode of matplotlib is on by default. This means, that every plot command you type directly results in figure. This allows you to interactively interact with your plot, since every command directly updates the figure. However, when you creating a complex plot using a script, you should have turned this mode off to prevent some issues. To turn the mode on and off use ```plt.ion()``` and ```plt.ioff()```, respectively.
-This is also a good time to talk about "backends". A backend is basically what matplotlib does after it has calculated how the plot is gonna look like. There are graphical backends, which results in a graphical representation of the plot and there are non-graphical backends, which can be used to store the plot in a certain format. Usually you don't need to mess around with this. The reason, why I'm bringing it up here, is because Ipython adds another very special backend to the equation: the inline plot. This backend only works inside of an Ipython console and results in plots drawn directly to the console window. To activate it type ```%matplotlib inline```; to change back to a secondary window to display your plots type ```%matplotlib qt```. If you are not sure which backend you are using, just try out both and see the difference; when the qt backend is selected the may be displayed in a minimized window. So check your taskbar!
+Before we proceed, I want to say a few word about this last line of the plotting example. If your remove the ```plt.show()``` and run the code again, it will probably still work. This is, because inside an Ipython console the interactive plotting mode of matplotlib is on by default. This means, that every plot command you type directly results in figure. This allows you to interactively interact (silly phrase...) with your plot, since every command directly updates the figure. However, when you creating a complex plot using a script, you should have turned this mode off to prevent some issues. To turn the mode on or off use ```plt.ion()``` and ```plt.ioff()```, respectively.
+This is also a good time to talk about "backends". A backend is basically what matplotlib does after it has calculated how the plot is gonna look like. There are graphical backends, which results in a graphical representation of the plot and there are non-graphical backends, which can be used to store the plot in a certain format. Usually you don't need to mess around with this. The reason, why I'm bringing it up here, is because Ipython adds another very special backend to the equation: the inline plot. This backend only works inside of an Ipython console and results in plots drawn directly to the console window. To activate it type ```%matplotlib inline```; to change back to a secondary window for displaying your plots type ```%matplotlib qt```. If you are not sure which backend you are using, just try out both and see the difference; when the qt backend is selected the plot may be displayed in a minimized window. So check your taskbar!
 
-To really master plotting with matplotlib you have to understand the hierarchy of elements a plot consists of.
+Ok, we got enough basics to handle some real life data!
+
+### A first Example
+
+To follow along, get the spectral data from this [github-repo](https://github.com/AKuederle/scipy-tutorial/blob/master/spec_1). The consists of two columns. However, only the second column contains relevant data. Our goal is to clean the data and to visualize it.
+
+So, here is what we want to do:
+
+1. Import the data
+2. Get rid off the unnecessary column
+3. Normalise the data
+4. Create appropriate x-values
+5. Cut off uninteresting parts
+6. Plot the remaining part
+
+Let's get to work!
+
+Because we want to do some real work and not just play around with the data, it is appropriate to right a real reusable script. Hence, create a new empty script in Spyder and save it in the same folder as the spectral data. You can press F5 to run the script and see its output inside our ipython console. I would also recommend to use the variable explorer after each run to check if everything went as expected.
+
+As usual we have to start with importing the the needed modules.
+
+{% highlight Python %}
+import numpy as np
+import matplotlib.pyplot as plt
+{% endhighlight %}
+
+One and two can be solved in one step:
+
+{% highlight Python %}
+_, data = np.loadtxt("./spec", unpack=True)
+{% endhighlight %}
+
+We are just using numpy's loadtext function with its unpack parameter. This allows us to parse the the second column to our *data* variable and the first to the *underscore* variable. You could have named this variable waht ever you want, but "_" or names starting with a "_" don't show up in spyder's variable explorer by default; using it keeps everything a little bit cleaner.
+
+Now we have to normalise the data. This means we want to define each point relative to the maxima of the spectra. Therefore, we have to divide each data-point by the maxima's value.
+We can get the maxima using the *max()* function. Then, we can simply divide our array by this scalar.
+
+{% highlight Python %}
+normalised_data = data/data.max()
+{% endhighlight %}
+
+To create appropriate x-values, we have to know, what our x-axes actually represents. Let's assume, our spectral data was recorded with wavelength in a range from 100 - 1000 nm. Now we can use *np.linspace* to create a new array. We gonna use 250 points to match the length of our data array.
+
+{% highlight Python %}
+x_values = np.linspace(100, 1000, 250)
+{% endhighlight %}
+
+Because we are only interested (for now particular reason) in data from index 20 upwards, we have to cut of these first 19 datapoints utilizing the power of array slicing.
+
+{% highlight Python %}
+normalised_data = normalised_data[19:]
+x_values = x_values[19:]
+{% endhighlight %}
+
+Last thing to do, is plotting the data.
+
+{% highlight Python %}
+plt.plot(x_values, normalised_data)
+{% endhighlight %}
+
+If something went wrong, check with the working code on [Github](https://github.com/AKuederle/scipy-tutorial/blob/master/example1.py).
+
+However, if everything went well, you should end up with the following picture:
+
+<img src="/images/posts/scipy_1/example_1_final.png" width="500" />
+
+Not particular pretty, but that's all for now. We will start of the next part of this tutorial series by getting into more advanced matplotlib stuff, so we can improve the appearance of this plot.
+
+If there are any problems, or you have specific topics you want me to cover, feel free to comment down below or contact me on any other way.
+
