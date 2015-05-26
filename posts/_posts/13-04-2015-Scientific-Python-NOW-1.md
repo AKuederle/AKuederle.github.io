@@ -211,7 +211,9 @@ plt.plot(x_data, y_data) # plot the data
 plt.show() # display the figure
 {% endhighlight %}
 
-Yeah! A line! Let's break down what happened. First we "generated" some data. This data doesn't have to be a numpy array; a simple list of integers or floats will work to. After this, we plot the data using the ```plt.plot()``` function. Depending on how many parameters you pass to the function it changes its behaviour. Passing only one parameter, this value is taken as the y-data. Passing two arguments, the first is used as the x-data and the second as the y-data. You can further use an optional third parameter to specify the plot colour and the shape of the markers.
+<img src="/images/posts/scipy_1/first_line.png" width="500" />
+
+Yeah! A line! Let's break down what happened. First we "generated" some data. This data doesn't have to be a numpy array; a simple list of integers or floats will work, too. After this, we plot the data using the ```plt.plot()``` function. Depending on how many parameters you pass to the function it changes its behaviour. Passing only one parameter, this value is taken as the y-data. Passing two arguments, the first is used as the x-data and the second as the y-data. You can further use an optional third parameter to specify the plot colour and the shape of the markers.
 
 {% highlight Python %}
 plt.plot(x_data, y_data, "r--") # plot a red dashed line
@@ -225,7 +227,7 @@ Ok, we got enough basics to handle some real life data!
 
 ### A first Example
 
-To follow along, get the spectral data from this [github-repo](https://github.com/AKuederle/scipy-tutorial/blob/master/spec_1). The consists of two columns. However, only the second column contains relevant data. Our goal is to clean the data and to visualize it.
+To follow along, get the spectral data from this [github-repo](https://github.com/AKuederle/scipy-tutorial/blob/master/spec_1). The file consists of two columns. However, only the second column contains relevant data. Our goal is to clean the data and to visualize it.
 
 So, here is what we want to do:
 
@@ -240,7 +242,7 @@ Let's get to work!
 
 Because we want to do some real work and not just play around with the data, it is appropriate to write a real reusable script. Hence, create a new empty script in Spyder and save it in the same folder as the spectral data. You can press F5 to run the script and see its output inside our ipython console. I would also recommend using the variable explorer after each run to check if everything went as expected.
 
-As usual we have to start with importing the the needed modules.
+As usual we have to start with importing the the needed modules. Therefore, the first lines of your new script should be:
 
 {% highlight Python %}
 import numpy as np
@@ -250,7 +252,7 @@ import matplotlib.pyplot as plt
 One and two can be solved in one step:
 
 {% highlight Python %}
-_, data = np.loadtxt("./spec", unpack=True)
+_, data = np.loadtxt("./spec_1", unpack=True)
 {% endhighlight %}
 
 We are just using numpy's loadtext function with its unpack parameter. This allows us to parse the second column to our *data* variable and the first to the *underscore* variable. You could have named this variable what ever you want, but "\_" or names starting with a "\_" don't show up in spyder's variable explorer by default; using them, keeps everything a little bit cleaner.
