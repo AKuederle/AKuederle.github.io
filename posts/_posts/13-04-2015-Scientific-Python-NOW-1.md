@@ -270,7 +270,7 @@ To create appropriate x-values we have to know what our x-axes actually represen
 x_values = np.linspace(100, 1000, 250)
 {% endhighlight %}
 
-Because we are only interested (just for the porpoise of this tutorial) in  the data from index 20 upwards, we have to cut of these first 19 datapoints utilizing the power of array slicing.
+Because we are only interested (just for the purposes of this tutorial) in  the data from index 20 upwards, we have to cut of these first 19 datapoints utilizing the power of array slicing.
 
 {% highlight Python %}
 normalised_data = normalised_data[19:]
