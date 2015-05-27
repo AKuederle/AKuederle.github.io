@@ -19,7 +19,7 @@ Modularity allows Python to be used in Web Programming, GUI Development, Softwar
 Before we talk about what all these cool packages/modules can do for us, we should get you set up, so you can try out everything I show yourself.
 Head over to the [Continuum website](https://store.continuum.io/cshop/anaconda/) and download **Anaconda**, a completely free Python distribution which includes all the packages you ever gonna need. Download the Python 3.x version (If you choose the Python 2.7 version, some of my examples might not work).
 If you finished downloading and installing, launch **Spyder**, the Python IDE (Place where you type and run your code in) which ships with Anaconda. If Spyder is not listed under your applications, head over to the *Scripts* folder of your Anaconda installation (On Windows: C:\Users\your_user_name\Anaconda3\Scripts by default) and launch Spyder from there.
-The Spyder Window is by default divided in three sub-windows. On the left your code editor, on the top right your object/variable inspector, and on the bottom right your console. Take a closer look at the console window. It is separated in three tabs. Make sure you are in the "Ipython console"-tab. If no console is displayed in this tab, start one by right clicking the empty space.
+The Spyder Window is by default divided in three sub-windows. On the left side is your code editor, on the top right your object/variable inspector, and on the bottom right your console. Take a closer look at the console window. It is separated in three tabs. Make sure you are in the "Ipython console"-tab. If no console is displayed in this tab, start one by right clicking the empty space.
 Next thing, we have to make the modules we need available to us. They were installed alongside with Anaconda, but in a freshly opened Python console only the core modules of your Python installation are accessible. To use other modules, you have to type:
 
 {% highlight Python %}
@@ -41,7 +41,7 @@ If you have any problems setting everything up, feel free to comment down below 
 
 Let's talk about what the before mentioned modules offer us!
 
-### Numpy array
+### Numpy Array
 
 The Numpy package is the basically the main module you will use when doing math or more specific matrix based computation in Python. By the way "matrix" in this context includes any kind of numerical data which can be expressed in a grid, like a set of spectra or stock data.
 
@@ -83,7 +83,7 @@ We can also do stuff, which is no real math, but interesting from a programming 
 
 {% highlight Python %}
 array.shape # Get number of lines and rows
-array.argmax() # Get the maximal value
+array.max() # Get the maximal value
 array.sum() # Add up all elements of the array
 array.flatten() # reduce the array to one dimension
 {% endhighlight %}
@@ -144,7 +144,7 @@ Here is a short summary of the syntax:
 - use a colon to select everything between the number for and after the colon *[3:5]*
 - if no index is specified before or after a colon, it means "from the beginning" or "till the end" of the array (just a colon without any indices translates to "selecting everything"). *[:3], [2:], or [:, 4]*
 - you can use negative index values to select elements starting from the end of the array. *[-3]*
-- use square parentheses ( [] ) with comma-separated indices to select specific elements. *[[2, 7]]*
+- use square parentheses ( [ ] ) with comma-separated indices to select specific elements. *[[2, 7]]*
 - use a comma (,) to separate multiple dimensions. *[2, 6]*
 
 Really try to understand how array slicing works! It can greatly boost your productivity when working with complex data.
@@ -164,7 +164,7 @@ A nice Spyder specific trick is to use the build-in object inspector (top right 
 
 *Enough with this example nonsense! I want to have my own data and analyse it! - Ok, Ok... step by step:*
 
-### How to get your own data
+### How to get your own Data
 
 Of course, if you want to analyse something you need a way to import your data. This is what we ganna talk about in this section.
 Assuming you don't have time to type in all your data by hand, the best way to import it is by using the csv data format. *CSV* means "Comma separated value" and is basically a textfile containing all your data points separated by commas and line-breaks. If your specific dataset is not using a comma as separator, don't worry! You can configure the csv importer to work with any separative character you desire.
@@ -195,7 +195,7 @@ column_1, column_2, column_3 = np.loadtxt("path/to/my/data/data.txt", unpack=Tru
 
 Ok, we have a way to import our own data and we know a little bit about how to manipulate our data. But come on... Numbers are boring to look add. Let's make some pretty lines and figures out of all these numbers! (Still no real data example, but we getting there, I promise!)
 
-### Plotting your data
+### Plotting your Data
 
 As its name has maybe already gave away, we will talk about the matplotlib library in this section.
 Maybe you were confused earlier on when we imported *matplotlib.pyplot* instead of simply *matplotlib*. The pyplot module is part of the matplotlib package and contains all the stuff we need to make beautiful 2D plots (lines, bars, colourmaps, ...). If you want to make more crazy stuff, like 3D plots or simple animation stuff, you need to import other modules of the matplotlib package. But for now, we gonna focus on the 2D library.
@@ -240,9 +240,9 @@ So, here is what we want to do:
 
 Let's get to work!
 
-Because we want to do some real work and not just play around with the data, it is appropriate to write a real reusable script. Hence, create a new empty script in Spyder and save it in the same folder as the spectral data. You can press F5 to run the script and see its output inside our ipython console. I would also recommend using the variable explorer after each run to check if everything went as expected.
+Because we want to do some real work and not just playing around with the data, it is appropriate to write a real reusable script. Hence, create a new empty script in Spyder and save it in the same folder as the spectral data. You can press F5 to run the script and see its output inside our ipython console. I would also recommend using the variable explorer after each run to check if everything went as expected.
 
-As usual we have to start with importing the the needed modules. Therefore, the first lines of your new script should be:
+As usual we have to start with importing the needed modules. Therefore, the first lines of your new script should be:
 
 {% highlight Python %}
 import numpy as np
