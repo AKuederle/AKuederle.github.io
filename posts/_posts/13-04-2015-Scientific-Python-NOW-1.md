@@ -19,7 +19,7 @@ Modularity allows Python to be used in Web Programming, GUI Development, Softwar
 Before we talk about what all these cool packages/modules can do for us, we should get you set up, so you can try out everything I show yourself.
 Head over to the [Continuum website](https://store.continuum.io/cshop/anaconda/) and download **Anaconda**, a completely free Python distribution which includes all the packages you ever gonna need. Download the Python 3.x version (If you choose the Python 2.7 version, some of my examples might not work).
 If you finished downloading and installing, launch **Spyder**, the Python IDE (Place where you type and run your code in) which ships with Anaconda. If Spyder is not listed under your applications, head over to the *Scripts* folder of your Anaconda installation (On Windows: C:\Users\your_user_name\Anaconda3\Scripts by default) and launch Spyder from there.
-The Spyder Window is by default divided in three sub-windows. On the left your code editor, on the top right your object/variable inspector, and on the bottom right your console. Take a closer look at the console window. It is separated in three tabs. Make sure you are in the "Ipython console"-tab. If no console is displayed in this tab, start one by right clicking the empty space.
+The Spyder Window is by default divided in three sub-windows. On the left side is your code editor, on the top right your object/variable inspector, and on the bottom right your console. Take a closer look at the console window. It is separated in three tabs. Make sure you are in the "Ipython console"-tab. If no console is displayed in this tab, start one by right clicking the empty space.
 Next thing, we have to make the modules we need available to us. They were installed alongside with Anaconda, but in a freshly opened Python console only the core modules of your Python installation are accessible. To use other modules, you have to type:
 
 {% highlight Python %}
@@ -41,7 +41,7 @@ If you have any problems setting everything up, feel free to comment down below 
 
 Let's talk about what the before mentioned modules offer us!
 
-### Numpy array
+### Numpy Array
 
 The Numpy package is the basically the main module you will use when doing math or more specific matrix based computation in Python. By the way "matrix" in this context includes any kind of numerical data which can be expressed in a grid, like a set of spectra or stock data.
 
@@ -83,7 +83,7 @@ We can also do stuff, which is no real math, but interesting from a programming 
 
 {% highlight Python %}
 array.shape # Get number of lines and rows
-array.argmax() # Get the maximal value
+array.max() # Get the maximal value
 array.sum() # Add up all elements of the array
 array.flatten() # reduce the array to one dimension
 {% endhighlight %}
@@ -144,7 +144,7 @@ Here is a short summary of the syntax:
 - use a colon to select everything between the number for and after the colon *[3:5]*
 - if no index is specified before or after a colon, it means "from the beginning" or "till the end" of the array (just a colon without any indices translates to "selecting everything"). *[:3], [2:], or [:, 4]*
 - you can use negative index values to select elements starting from the end of the array. *[-3]*
-- use square parentheses ( [] ) with comma-separated indices to select specific elements. *[[2, 7]]*
+- use square parentheses ( [ ] ) with comma-separated indices to select specific elements. *[[2, 7]]*
 - use a comma (,) to separate multiple dimensions. *[2, 6]*
 
 Really try to understand how array slicing works! It can greatly boost your productivity when working with complex data.
@@ -164,7 +164,7 @@ A nice Spyder specific trick is to use the build-in object inspector (top right 
 
 *Enough with this example nonsense! I want to have my own data and analyse it! - Ok, Ok... step by step:*
 
-### How to get your own data
+### How to get your own Data
 
 Of course, if you want to analyse something you need a way to import your data. This is what we ganna talk about in this section.
 Assuming you don't have time to type in all your data by hand, the best way to import it is by using the csv data format. *CSV* means "Comma separated value" and is basically a textfile containing all your data points separated by commas and line-breaks. If your specific dataset is not using a comma as separator, don't worry! You can configure the csv importer to work with any separative character you desire.
@@ -195,7 +195,7 @@ column_1, column_2, column_3 = np.loadtxt("path/to/my/data/data.txt", unpack=Tru
 
 Ok, we have a way to import our own data and we know a little bit about how to manipulate our data. But come on... Numbers are boring to look add. Let's make some pretty lines and figures out of all these numbers! (Still no real data example, but we getting there, I promise!)
 
-### Plotting your data
+### Plotting your Data
 
 As its name has maybe already gave away, we will talk about the matplotlib library in this section.
 Maybe you were confused earlier on when we imported *matplotlib.pyplot* instead of simply *matplotlib*. The pyplot module is part of the matplotlib package and contains all the stuff we need to make beautiful 2D plots (lines, bars, colourmaps, ...). If you want to make more crazy stuff, like 3D plots or simple animation stuff, you need to import other modules of the matplotlib package. But for now, we gonna focus on the 2D library.
@@ -213,15 +213,15 @@ plt.show() # display the figure
 
 <img src="/images/posts/scipy_1/first_line.png" width="500" />
 
-Yeah! A line! Let's break down what happened. First we "generated" some data. This data doesn't have to be a numpy array; a simple list of integers or floats will work, too. After this, we plot the data using the ```plt.plot()``` function. Depending on how many parameters you pass to the function it changes its behaviour. Passing only one parameter, this value is taken as the y-data. Passing two arguments, the first is used as the x-data and the second as the y-data. You can further use an optional third parameter to specify the plot colour and the shape of the markers.
+Yeah! A line! Let's break down what happened. First we "generated" some data. This data doesn't have to be a numpy array; a simple list of integers or floats will work, too. After this, we plot the data using the ```plt.plot()``` function. Depending on how many parameters you pass to the function it changes its behaviour. Passing only one parameter, its value is taken as the y-data. Passing two arguments, the first is used as the x-data and the second as the y-data. You can further use an optional third parameter to specify the plot colour and the shape of the markers.
 
 {% highlight Python %}
 plt.plot(x_data, y_data, "r--") # plot a red dashed line
 {% endhighlight %}
 
 To get all the possible values for this optional parameter check the [documentation](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot).
-Before we proceed, I want to say a few word about this last line of the plotting example. If your remove the ```plt.show()``` and run the code again, it will probably still work. This is, because inside an Ipython console the interactive plotting mode of matplotlib is on by default. This means, that every plot command you type directly results in figure. This allows you to interactively interact (silly phrase...) with your plot, since every command directly updates the figure. However, when you creating a complex plot using a script, you should have turned this mode off to prevent some issues. To turn the mode on or off use ```plt.ion()``` and ```plt.ioff()```, respectively.
-This is also a good time to talk about "backends". A backend is basically what matplotlib does after it has calculated how the plot is gonna look like. There are graphical backends, which results in a graphical representation of the plot and there are non-graphical backends, which can be used to store the plot in a certain format. Usually you don't need to mess around with this. The reason, why I'm bringing it up here, is because Ipython adds another very special backend to the equation: the inline plot. This backend only works inside of an Ipython console and results in plots drawn directly to the console window. To activate it type ```%matplotlib inline```; to change back to a secondary window for displaying your plots type ```%matplotlib qt```. If you are not sure which backend you are using, just try out both and see the difference; when the qt backend is selected the plot may be displayed in a minimized window. So check your taskbar!
+Before we proceed, I want to say a few words about this last line of the plotting example. If your remove the ```plt.show()``` and run the code again, it will probably still work. This is, because inside an Ipython console the interactive plotting mode of matplotlib is on by default. This means, that every plot command you type directly results in figure. This allows you to interactively interact (silly phrase...) with your plot, since every command directly updates the figure. However, when you creating a complex plot using a script, you should have turned this mode off to prevent some issues. To turn the mode on or off use ```plt.ion()``` and ```plt.ioff()```, respectively.
+This is also a good time to talk about "backends". A backend is basically what matplotlib does after it has calculated how the plot is gonna look like. There are graphical backends, which result in a graphical representation of the plot and there are non-graphical backends, which can be used to store the plot in a certain format. Usually you don't need to mess around with this. The reason, why I'm bringing it up here is, because Ipython adds another very special backend to the equation: the inline plot. This backend only works inside of an Ipython console and results in plots drawn directly to the console window. To activate it type ```%matplotlib inline```; to change back to a secondary window for displaying your plots type ```%matplotlib qt```. If you are not sure which backend you are using, just try out both and see the difference; when the qt backend is selected the plot may be displayed in a minimized window. So check your taskbar!
 
 Ok, we got enough basics to handle some real life data!
 
@@ -240,9 +240,9 @@ So, here is what we want to do:
 
 Let's get to work!
 
-Because we want to do some real work and not just play around with the data, it is appropriate to write a real reusable script. Hence, create a new empty script in Spyder and save it in the same folder as the spectral data. You can press F5 to run the script and see its output inside our ipython console. I would also recommend using the variable explorer after each run to check if everything went as expected.
+Because we want to do some real work and not just playing around with the data, it is appropriate to write a real reusable script. Hence, create a new empty script in Spyder and save it in the same folder as the spectral data. You can press F5 to run the script and see its output inside our ipython console. I would also recommend using the variable explorer after each run to check if everything went as expected.
 
-As usual we have to start with importing the the needed modules. Therefore, the first lines of your new script should be:
+As usual we have to start with importing the needed modules. Therefore, the first lines of your new script should be:
 
 {% highlight Python %}
 import numpy as np
@@ -270,7 +270,7 @@ To create appropriate x-values we have to know what our x-axes actually represen
 x_values = np.linspace(100, 1000, 250)
 {% endhighlight %}
 
-Because we are only interested (just for the porpoise of this tutorial) in  the data from index 20 upwards, we have to cut of these first 19 datapoints utilizing the power of array slicing.
+Because we are only interested (just for the purposes of this tutorial) in  the data from index 20 upwards, we have to cut of these first 19 datapoints utilizing the power of array slicing.
 
 {% highlight Python %}
 normalised_data = normalised_data[19:]

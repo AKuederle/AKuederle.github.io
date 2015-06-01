@@ -16,18 +16,47 @@ header
         color: $header-link-hover
       &:visited
         text-decoration: none
+    ul
+      list-style-type: none
+      margin: 0
+      padding: 0
     .title-link
       display: inline-block
       font-size: 30px
       font-weight: 700
       margin-top: 5px
       margin-left: 20px
-
-    .links
-      display: inline-block
-      word-spacing: 10px
-      font-size: 20px
+      li
+        display: inline
+    #menu-icon
+      fill: $header-link-color
+      display: none
       float: right
       clear: both
       margin-top: 10px
       margin-right: 20px
+      cursor: pointer
+      li
+        display: inline
+      &:hover
+        fill: $header-link-hover
+    .mobile-menu
+      width: 100%
+      background: white
+      float: right
+      margin-right: 20px
+      font-size: 30px
+      text-align: right
+      li
+        display: block
+        margin-bottom: 10px
+    .inline-menu
+      word-spacing: 10px
+      font-size: 20px
+      float: right
+      // clear: both
+      margin-top: 10px
+      margin-right: 20px
+      display: inline
+      li
+        display: inline
