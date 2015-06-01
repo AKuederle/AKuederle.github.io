@@ -227,7 +227,7 @@ Ok, we got enough basics to handle some real life data!
 
 ### A first Example
 
-To follow along, get the spectral data from this [github-repo](https://github.com/AKuederle/scipy-tutorial/blob/master/spec_1). The file consists of two columns. However, only the second column contains relevant data. Our goal is to clean the data and to visualize it.
+To follow along, get the spectral data from this [github-repo](https://github.com/AKuederle/scipy-tutorial/blob/part1/example1/spec_1). The file consists of two columns. However, only the second column contains relevant data. Our goal is to clean the data and to visualize it.
 
 So, here is what we want to do:
 
@@ -284,7 +284,7 @@ plt.plot(x_values, normalised_data)
 {% endhighlight %}
 ... And we are done!
 
-If something went wrong, check with my code on [Github](https://github.com/AKuederle/scipy-tutorial/blob/master/example1.py).
+If something went wrong, check with my code on [Github](https://github.com/AKuederle/scipy-tutorial/blob/part1/example1/example1.py).
 
 However, if everything went well, you should end up with the following picture:
 
