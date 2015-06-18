@@ -7,7 +7,9 @@ comments: True
 date: 01.06.2015
 ---
 
-This is the second part of my introduction-series to scientific python. You can check out the first part [here]({% post_url 26-05-2015-Scientific-Python-NOW-1 %}). This time, we gonna continue with plotting our data and than we gonna move on to some general coding and coding techniques.
+This is the second part of my introduction-series to scientific python. This time, we gonna continue with plotting our data and than we gonna move on to some general coding and coding techniques.
+
+If you haven't read the first part, you can check  it out [here]({% post_url 26-05-2015-Scientific-Python-NOW-1 %}).
 
 ### A first Example (Part 2)
 As promised, we start of by improving our python plot we made in the previous part. You can get the code to create it on my [Github](https://github.com/AKuederle/scipy-tutorial/tree/part1/example1).
