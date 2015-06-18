@@ -84,16 +84,17 @@ If you would print out the options list at this point, it looks like this:
 Now, we have to generate our Latex code based the data. To keep everything as separated and modularised as possible, we want to generate as little Tex-code as possible with our Python script. The styling and the layout of the later document will be handled by a Latex template file. The following python lines produce Latex code which creates Latex variables out of our key-value pairs. In our Latex template file we can use *\keyname* to place the values inside of our document.
 
 {% highlight python %}
-
+{% raw %}
 tex_code = ""
 for key, value in options:
     tex_code = tex_code + "\\newcommand{{\\{}}}{{{}}}\n".format(key, value)
-
+{% endraw %}
 {% endhighlight %}
 
 To make the produced Tex code compilable, we gonna add a "minimal" Tex-document and write everything to our output file. To keep our actual project folder clean, we gonna put all the generated documents in the ".build" - subfolder.
 
 {% highlight python %}
+{% raw %}
 template = "test"
 tex_code = tex_code + """
 
@@ -115,6 +116,7 @@ if not os.path.exists(build_d):  # create the build directory if not existing
 with open(out_file+".tex", "w") as f:  # saves tex_code to output file
     f.write(tex_code)
 
+{% endraw %}
 {% endhighlight %}
 
 As you saw, I introduced the new variable "template". Later, we want to use this variable to specify the wanted style sheet/document type.
