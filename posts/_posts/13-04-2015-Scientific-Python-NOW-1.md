@@ -294,3 +294,4 @@ Not particular pretty, but that's all for now. We will start of the next part of
 
 If there are any problems, or you have specific topics you want me to cover, feel free to comment down below or contact me in any other way.
 
+Continue reading --> [Part 2]({% post_url 01-06-2015-Scientific-Python-NOW-2 %})
