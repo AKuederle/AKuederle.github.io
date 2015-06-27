@@ -82,7 +82,7 @@ np.dot(array, array) # Matrix multiplication
 We can also do stuff, which is no real math, but interesting from a programming stand point:
 
 {% highlight Python %}
-array.shape # Get number of lines and rows
+array.shape # Get number of rows and columns
 array.max() # Get the maximal value
 array.sum() # Add up all elements of the array
 array.flatten() # reduce the array to one dimension
@@ -104,7 +104,7 @@ The most basic thing to do is selecting a line:
 sub_array = array[2]
 {% endhighlight %}
 
-This will assign the third line of array to the new sub_array variable. Yeah, your red right! The third line and not - as you may expected - the second. This is a import thing to keep in mind: Counting in Python always start with 0. So the first element of anything countable has always the index 0 (array[0]); the last element has the index -1.
+This will assign the third line of array to the new sub_array variable. Yeah, your read right! The third line and not - as you may expected - the second. This is a import thing to keep in mind: Counting in Python always start with 0. So the first element of anything countable has always the index 0 (array[0]); the last element has the index -1.
 
 {% highlight Python %}
 sub_array = array[-2] # select the second last element of the array
@@ -123,7 +123,7 @@ Or some specific lines (note the second pair of parentheses):
 sub_array = array[[2, 4, -2]] # select the second, the fourth, and the second last element of the array
 {% endhighlight %}
 
-Let's take it to the next dimension (two to begin with). Selecting a single element in a 2D matrix can be done by specifying the line and the row index separated by a comma.
+Let's take it to the next dimension (two to begin with). Selecting a single element in a 2D matrix can be done by specifying the row and the col index separated by a comma.
 
 {% highlight Python %}
 element = array_2D[3, 4] # select the element in the 4th row of the 5th column
@@ -135,7 +135,7 @@ But this is not limited to selecting a single element. You can easily select mul
 sub_array = array[2,3-9] # select the 4-9 element in the third line
 sub_array = array[2,:-1] # select all elements in the third line except the last
 sub_array = array[:4, :4] # select a 4x4 array in the top left corner of the array
-sub_array = array[:, 4] # select row number 5
+sub_array = array[:, 4] # select column number 5
 {% endhighlight %}
 
 These selection can be expanded to any dimension and can get far more complex than these examples.
