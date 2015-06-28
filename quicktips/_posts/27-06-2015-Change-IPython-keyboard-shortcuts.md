@@ -47,8 +47,8 @@ The basic structure of a new command looks like this (example modified from [her
 'Alt-3' : {
     help    : 'Toggle comments',
     help_index : 'zz',
-    handler : function () {
-        var cm=IPython.notebook.get_selected_cell().code_mirror;
+    handler : function (env) {
+        var cm=env.notebook.get_selected_cell().code_mirror;
         var from = cm.getCursor("start"), to = cm.getCursor("end");
         cm.uncomment(from, to) || cm.lineComment(from, to);
         return false;
@@ -73,8 +73,8 @@ Before we make the created hotkey available inside of our notebook, I quickly go
 'Alt-1' : {
     help: 'Indent',
     help_index : 'zz',
-    handler: function() {
-        var cm=IPython.notebook.get_selected_cell().code_mirror;
+    handler: function(env) {
+        var cm=env.notebook.get_selected_cell().code_mirror;
         cm.execCommand('indentMore');
         return false;
     }
@@ -83,8 +83,8 @@ Before we make the created hotkey available inside of our notebook, I quickly go
 'Alt-2' : {
     help    : 'Indent less',
     help_index : 'zz',
-    handler : function () {
-        var cm = IPython.notebook.get_selected_cell().code_mirror;
+    handler : function (env) {
+        var cm = env.notebook.get_selected_cell().code_mirror;
         cm.execCommand('indentLess');
         return false;
     }
@@ -162,10 +162,10 @@ To load the extension automatically when starting a new notebook, open up a IPyt
 
 {% highlight JavaScript %}
 %%JavaScript
-IPython.notebook.config.update({"custom_shortcuts":true})
+IPython.notebook.config.update({"load_extensions":{"custom_shortcuts":true}})
 {% endhighlight %}
 
-This should update /.ipython/profile_default/nbconfig/notebook.json accordingly. Now your new awesome shortcuts are available everywhere and every time.
+This should update `~/.ipython/profile_default/nbconfig/notebook.json` accordingly. Now your new awesome shortcuts are available everywhere and every time.
 
 As always, you can find the full .js file on [github](https://github.com/AKuederle/IPython-custom-shortcuts/blob/master/custom_shortcuts.js)
 
