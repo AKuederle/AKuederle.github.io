@@ -15,7 +15,7 @@ For testing and understanding purposes, I suggest to open a IPython notebook now
 
 First, we gonna need the list of predefined functions we can create hotkeys for. The easiest way is to run the following lines od code in your browser's JavaScript console ("crtl+shift+J" to open in Chrome and "crtl+shift+K" in Firefox).
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 $.map(
      IPython.keyboard_manager.command_shortcuts.actions.\_actions,
      function(k,v){return v}
@@ -25,7 +25,7 @@ $.map(
 This should print out a long list of commands to your console. Fortunately, the names are all self-explanatory. However, this is only a small selection of the available commands, since not all of them are handled by the keyboard_manager. Still, there a some commands I want have new key-bindings for.
 To do so, we have to run some more lines of JavaScript. Using the ``%%JavaScript`` cell-magic, we can play with the JavaScript settings directly from inside our notebook.
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 %%JavaScript
 IPython.keyboard_manager.command_shortcuts.add_shortcut('Shift-k','ipython.move-selected-cell-up')
 IPython.keyboard_manager.command_shortcuts.add_shortcut('Shift-j','ipython.move-selected-cell-down')
@@ -34,7 +34,7 @@ IPython.keyboard_manager.command_shortcuts.add_shortcut('Shift-j','ipython.move-
 So, basically we are just using the provided add_shortcut function to connect a key press with an action.
 You can remove a key-bining in the same manner:
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 %%JavaScript
 IPython.keyboard_manager.command_shortcuts.remove_shortcut('Shift-k')
 {% endhighlight %}
@@ -43,12 +43,12 @@ As said, we are limited in terms of available functions using this method. The g
 
 The basic structure of a new command looks like this (example modified from [here](https://github.com/juhasch/IPython-notebook-extensions/blob/master/usability/comment-uncomment.js)):
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 'Alt-3' : {
     help    : 'Toggle comments',
     help_index : 'zz',
-    handler : function () {
-        var cm=IPython.notebook.get_selected_cell().code_mirror;
+    handler : function (env) {
+        var cm=env.notebook.get_selected_cell().code_mirror;
         var from = cm.getCursor("start"), to = cm.getCursor("end");
         cm.uncomment(from, to) || cm.lineComment(from, to);
         return false;
@@ -56,9 +56,9 @@ The basic structure of a new command looks like this (example modified from [her
 {% endhighlight %}
 
 So, we start off with the new shortcut ('Alt-3') followed by its assigned attributes. The *help*-parameter helds the tooltip for our new action and the *help_index*-parameter defines the sorting position in the shortcut list (zz = at the end). The real magic happens at the *handler*-parameter; it contains the actual functionality of our shortcut. In the general case (= all examples I saw), the handler is a function and you can literally do what ever JavaScript allows you to do inside it.
-Further breaking down the example, in the first line of the function, the currently active Code Mirror instance is called (IPython uses one instance of the code editor for each cell). This instance has a bunch of functions you can call and use. To find out which, we can map and output them in the same way as before using our JavaScript-console.
+Further breaking down the example, in the first line of the function, the currently active Code Mirror instance of the currently active IPython environment (env) is called (IPython uses one instance of the code editor for each cell). This instance has a bunch of functions you can call and use. To find out which, we can map and output them in the same way as before using our JavaScript-console.
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 $.map(
      IPython.notebook.get_selected_cell().code_mirror,
      function(k,v){return v}
@@ -69,12 +69,12 @@ Using the ``getCursor``, ``uncomment``, and the ``lineComment`` functions, we ca
 
 Before we make the created hotkey available inside of our notebook, I quickly gonna show you the other hotkeys I created.
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 'Alt-1' : {
     help: 'Indent',
     help_index : 'zz',
-    handler: function() {
-        var cm=IPython.notebook.get_selected_cell().code_mirror;
+    handler: function(env) {
+        var cm=env.notebook.get_selected_cell().code_mirror;
         cm.execCommand('indentMore');
         return false;
     }
@@ -83,8 +83,8 @@ Before we make the created hotkey available inside of our notebook, I quickly go
 'Alt-2' : {
     help    : 'Indent less',
     help_index : 'zz',
-    handler : function () {
-        var cm = IPython.notebook.get_selected_cell().code_mirror;
+    handler : function (env) {
+        var cm = env.notebook.get_selected_cell().code_mirror;
         cm.execCommand('indentLess');
         return false;
     }
@@ -95,13 +95,13 @@ As you may noticed, these two are not using a provided Code Mirror function dire
 
 So, we got our three hotkeys. Now we have to actually add them as shortcuts to our notebook. To do so, we create a variable which contains our shortcuts.
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 var add_edit_shortcuts = {
         'Alt-3' : {
             help    : 'Toggle comments',
             help_index : 'zz',
-            handler : function () {
-                var cm=IPython.notebook.get_selected_cell().code_mirror;
+            handler : function (env) {
+                var cm=env.notebook.get_selected_cell().code_mirror;
                 var from = cm.getCursor("start"), to = cm.getCursor("end");
                 cm.uncomment(from, to) || cm.lineComment(from, to);
                 return false;
@@ -111,39 +111,41 @@ var add_edit_shortcuts = {
         'Alt-1' : {
             help: 'Indent',
             help_index : 'zz',
-            handler: function() {
-                var cm=IPython.notebook.get_selected_cell().code_mirror;
+            handler: function(env) {
+                var cm=env.notebook.get_selected_cell().code_mirror;
                 cm.execCommand('indentMore');
                 return false;
             }
         },
 
         'Alt-2' : {
-            help    : 'indent less',
+            help    : 'Indent less',
             help_index : 'zz',
-            handler : function () {
-                var cm = IPython.notebook.get_selected_cell().code_mirror;
+            handler : function (env) {
+                var cm = env.notebook.get_selected_cell().code_mirror;
                 cm.execCommand('indentLess');
                 return false;
             }
-        },
-    };
+        }
 {% endhighlight %}
 
 In a final step, we add them to the keyboard_manager:
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 IPython.keyboard_manager.edit_shortcuts.add_shortcuts(add_edit_shortcuts);
 {% endhighlight %}
 
-And we are done; but, only for this notebook. To make our shortcuts available ín every notebook, we have to create an notebook extension. While IPython extensions are .py-files stored in your local /.ipython/extensions folder, notebook extensions are JavaScript files stored in the /.ipython/nbextensions folder. To locate either one of these folders, run ``ipython locate`` from a terminal. Now we just have to create a .js-file containing our shortcut commands. In addition, we gonna add a on-load function, as suggested [here](http://carreau.gitbooks.io/jupyter-book/content/Jsextensions.html#). It looks like this and gives us a nice log-message when our extension is loaded:
+And we are done; but, only for this notebook. To make our shortcuts available ín every notebook, we have to create an notebook extension. While IPython extensions are .py-files stored in your local `/.ipython/extensions` folder, notebook extensions are JavaScript files stored in the /.ipython/nbextensions folder. To locate either one of these folders, run ``ipython locate`` from a terminal. Now we just have to create a .js-file containing our shortcut commands. In addition, we gonna nest everything into a on-load function, as suggested [here](http://carreau.gitbooks.io/jupyter-book/content/Jsextensions.html#). It looks like this and prevents timing issues when the extension is loaded:
 
-{% highlight JavaScript %}
-define(function(){
+{% highlight javascript %}
+define(['base/js/namespace'],function(IPython){
+  "use strict";
+  // Here go our variable definitions
   return {
     // this will be called at extension loading time
     //---
     load_ipython_extension: function(){
+        // Here goes code which should be executed on start up (Alias the add_shortcut commands)
         console.log("I have been loaded ! -- custom_shortcuts");
     }
     //---
@@ -151,22 +153,59 @@ define(function(){
 })
 {% endhighlight %}
 
+So, you put variable definitions and all this stuff before the return command, and inside the ``load_ipython_extension``-function you gonna place everything, which "actually" changes something. This prevents the issue, that our custom functions are loaded before IPython is correctly initialized.
+As always, you can find the full .js file on [github](https://github.com/AKuederle/IPython-custom-shortcuts/blob/old-way/custom_shortcuts.js).
+
 If you created the file and saved it as "custom_shortcuts.js" inside the nbextensions-folder you should be able to load it from inside of any notebook by running these two lines:
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 %%JavaScript
 IPython.load_extensions('custom_shortcuts');
 {% endhighlight %}
 
 To load the extension automatically when starting a new notebook, open up a IPython notebook and run the following lines:
 
-{% highlight JavaScript %}
+{% highlight javascript %}
 %%JavaScript
-IPython.notebook.config.update({"custom_shortcuts":true})
+IPython.notebook.config.update({"load_extensions":{"custom_shortcuts":true}})
 {% endhighlight %}
 
-This should update /.ipython/profile_default/nbconfig/notebook.json accordingly. Now your new awesome shortcuts are available everywhere and every time.
+This should update `~/.ipython/profile_default/nbconfig/notebook.json` accordingly. Now your new awesome shortcuts are available everywhere and every time.
 
-As always, you can find the full .js file on [github](https://github.com/AKuederle/IPython-custom-shortcuts/blob/master/custom_shortcuts.js)
+I hope you found this little tutorial helpful, and I would really appreciate more input regarding this topic. So, if you happen to know more about IPython's extensions, please leave a comment with resources and suggestions.
+
+**Update:** As pointed out in the comments, it might actually be better to create each shortcut individually as a new action. This would make it easier to reuse them in other parts of IPython again. Here is an example how to do this for the first shortcut:
+
+{% highlight javascript %}
+var toggle_comments = {
+    help    : 'Toggle comments',
+    help_index : 'zz',
+    handler : function (env) {
+        var cm=env.notebook.get_selected_cell().code_mirror;
+        var from = cm.getCursor("start"), to = cm.getCursor("end");
+        cm.uncomment(from, to) || cm.lineComment(from, to);
+        return false;
+    }
+}
+IPython.keyboard_manager.actions.register(toggle_comments,'toggle_comments')
+{% endhighlight %}
+
+Now, our action is registered. We can check this by calling the following from the JavaScript console.
+
+{% highlight javascript %}
+$.map(
+     IPython.keyboard_manager.command_shortcuts.actions.\_actions,
+     function(k,v){return v}
+     )
+{% endhighlight %}
+
+At the very end of the list, there should be a function called ``auto.toggle_comments``. We can assigned this action to any shortcut as before:
+
+{% highlight javascript %}
+IPython.keyboard_manager.edit_shortcuts.add_shortcut('Alt-5', 'auto.toggle_comments')
+{% endhighlight %}
+
+Note, that you need the ``auto.`` prefix!
+A updated version of the whole script based on this idea, can be found [here](https://github.com/AKuederle/IPython-custom-shortcuts/blob/futureproof/custom_shortcuts.js).
 
 I hope you found this little tutorial helpful, and I would really appreciate more input regarding this topic. So, if you happen to know more about IPython's extensions, please leave a comment with resources and suggestions.
