@@ -132,7 +132,7 @@ var add_edit_shortcuts = {
 
 In a final step, we add them to the keyboard_manager:
 
-% highlight JavaScript %}
+{% highlight JavaScript %}
 IPython.keyboard_manager.edit_shortcuts.add_shortcuts(add_edit_shortcuts);
 {% endhighlight %}
 
