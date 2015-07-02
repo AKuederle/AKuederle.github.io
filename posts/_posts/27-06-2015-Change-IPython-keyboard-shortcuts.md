@@ -7,7 +7,9 @@ comments: True
 date: 27.6.2015
 ---
 
-As many programmers who use Python for their scientific work, I really like the IPython notebook interface. However, using a German keyboard, I got annoyed by IPython's hotkeys. Many of them just won't work with a non-US-keyboard-layout. After a while of unsuccessful research about how to change them, the kind response on my [github issue](https://github.com/ipython/ipython/issues/8586) from [Matthias Bussonnier](https://github.com/Carreau), one of IPython's developers, finally got me on the right track. In the following I want to briefly summarize [his documentation](http://carreau.gitbooks.io/jupyter-book/content/keyboardshortcut.html) on this feature and explain how I changed my keyboard shortcuts.
+As many programmers who use Python for their scientific work, I really like the IPython notebook interface. However, using a German keyboard, I got annoyed by IPython's hotkeys. Many of them just won't work with a non-US-keyboard-layout. After a while of unsuccessful research about how to change them, I inally found a way to change them.
+
+After a few hours of pointless googleing, the kind response on my [github issue](https://github.com/ipython/ipython/issues/8586) from [Matthias Bussonnier](https://github.com/Carreau), one of IPython's developers, got me on the right track. In the following I want to briefly summarize [his documentation](http://carreau.gitbooks.io/jupyter-book/content/keyboardshortcut.html) on this feature and explain how I changed my keyboard shortcuts.
 
 The backend of the IPython notebook, as you probably know, is based on JavaScript. Therefore, the implementation of all IDE features is as well. Knowing JavaScript, you can customize the hell out of your IPython notebook; the only challenge is to find to appropriate commands.
 
