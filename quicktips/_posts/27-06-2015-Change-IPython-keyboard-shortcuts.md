@@ -17,7 +17,7 @@ First, we gonna need the list of predefined functions we can create hotkeys for.
 
 {% highlight javascript %}
 $.map(
-     IPython.keyboard_manager.command_shortcuts.actions.\_actions,
+     IPython.keyboard_manager.command_shortcuts.actions._actions,
      function(k,v){return v}
      )
 {% endhighlight %}
