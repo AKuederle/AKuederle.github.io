@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Customize IPython's Keyboard Shortcuts
-tags: IPython
+tags: Python, IPython
 permalink: customize-ipython-keymap
 comments: True
 date: 27.6.2015
