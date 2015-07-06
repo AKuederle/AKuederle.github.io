@@ -13,7 +13,7 @@ The default configuration shows the whole path to the current working-directory;
 
 The function's name is, unsurprisingly, ``prompt``. To be more specific, we are looking for the ``prompt``-function inside the global namespace. So, to overwrite it we just have to redefine it:
 
-{highlight PowerShell}
+{% highlight PowerShell %}
 function global:prompt {
     "my new Prompt text"
 }
@@ -21,11 +21,11 @@ function global:prompt {
 
 And done! - Kind of... A static text is boring and moreover, useless in terms of information. Of course, you can recreate the default *bash*-prompt (just put a "$" instead of "my new Prompt text") but I personally like to get at least information about the current directory.
 
-However, dynamic *Prompt*-text is as easy to create. Because the Prompt gets created by a simple function which gets called after each command, you can put any lines of code in there.
+Luckily, dynamic *Prompt*-text is as easy to create. Because the Prompt gets created by a simple function which gets called after each command, you can put any lines of code in there.
 
 I quickly gonna show you a view common building-blocks you can use:
 
-{highlight PowerShell}
+{% highlight PowerShell %}
 function global:prompt {
     $pwd  # your current directory (full path)
     $(Split-Path $pwd -Leaf) # your current directory (only name of directory)
@@ -39,13 +39,13 @@ function global:prompt {
 
 Keep in mind, when you want to use multiple of them together, you either have to put them all together in one-string or use the ``Write-Host`` function with the ``-nonewline``-switch. Using the second method, you can can also specify the color of the text (yeah, eye-candy!!).
 
-{highlight PowerShell}
+{% highlight PowerShell %}
 function global:prompt {  # One String
     "[" + (Get-Date).ToShortTimeString()+"] " + $(Split-Path $pwd -Leaf) + " $ "
 }
 {% endhighlight %}
 
-{highlight PowerShell}
+{% highlight PowerShell %}
 function global:prompt {  # Multiple Write-Host commands with color
     Write-Host("[") -nonewline
     Write-Host((Get-Date).ToShortTimeString()) -nonewline -foregroundcolor Red
@@ -59,7 +59,7 @@ I think that enough to get you started. Of course, you can put far more complex 
 
 That said, you can use the ``prompt`` function to execute code which is not related to styling your Prompt. Here is an example, where I create a variable which holds the last executed command as string inside this function.
 
-{highlight PowerShell}
+{% highlight PowerShell %}
 function global:prompt {  # One String
     $hist = $(Get-History)
        if ($hist.length -gt 0)
