@@ -7,8 +7,7 @@ comments: True
 date: 03.04.2016
 ---
 
-<!-- add awesome link -->
-If you are using Awesome as your Windows Manager tells about you that you a like lightweight and productivity focused working environments. But when you have to stare at your monitor for 10+ hours a day, some pleasant design doesn't hurt - especially if it makes your WM even more functional.
+If you are using [Awesome](https://awesome.naquadah.org/) as your Windows Manager tells about you that you a like lightweight and productivity focused working environments. But when you have to stare at your monitor for 10+ hours a day, some pleasant design doesn't hurt - especially if it makes your WM even more functional.
 
 A big design part of Awesome are the widgets located in the top (or bottom) bar. They display your current tag, your opened programs, your sys-tray icons, your clock, and so on. The nice thing is, everything can be customized.
 However, before we start doing so, we should understand the default configuration we get out of the box. Therefore, I will give you a breakdown of the widget-section in the default ```rc.lua``` file.
