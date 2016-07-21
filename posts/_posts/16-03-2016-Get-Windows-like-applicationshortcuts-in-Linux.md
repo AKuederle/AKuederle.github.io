@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to get Windows-like Application Shortcuts in Linux (KDE)
+title: How to get Windows-like Application Shortcuts in Linux (KDE, Gnome, and any other)
 tags: Linux Bash
 permalink: windows-like-appshortcuts-in-linux
 comments: True
@@ -8,6 +8,8 @@ date: 16.03.2016
 ---
 
 As many people, I changed to Linux because it makes some of my daily work a lot easier. It has a lot of features I, personally, consider superior to Windows. However, there are these small things, these small convenience, you will probably miss coming from Windows. One of the things I am missing is the way Windows handles the application shortcuts in the taskbar. But I gonna change that today and bring all the functionality to my glorious new KDE-Plasma desktop.
+
+**Note:** The whole process here is explained for KDE. However, it is not limited to that. The whole concept of run-or-raise a window, is independent of the desktop environment you are using. All the code should work everywhere. Only the way you register the shortcuts will differ. Please refer to the documentation for your distro or ask in the comments, if you run into problems.
 
 ### How does Windows handle it?
 
@@ -116,6 +118,3 @@ I also added a second hotkey for each application, which forces a new instance, 
 
 And we are done!
 Now you should have all the convenience you're used to from Windows, but with the power of Linux right at your fingertips!
-
-
-
