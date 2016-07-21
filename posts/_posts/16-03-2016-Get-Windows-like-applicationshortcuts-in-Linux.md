@@ -95,7 +95,29 @@ if contains "$app_list" "$2";
 fi
 {% endhighlight %}
 
-Save that script to convenient location on your harddrive (like ```/usr/local/bin``` or ```/opt/bin```). If you want to call your script just by the name and not by specifying the whole path, make sure to add the location to your PATH. Now we have to make the whole thing executable by running the following in the command-line:
+**Note**: As [Oleg](https://github.com/olegtc) mentioned in the comments, you can expand the script to also minimize the Window if it is currently active. You will need an additional tool for that, called ```xdotools```. It should be available in your repositories. If you want the functionality use this code from his [gist](https://gist.github.com/olegtc/d4b9858e9257ef7a0811ea8b109dd0c2) (all props to him!!!):
+
+{% highlight bash %}
+#!/bin/sh
+apps_table=$(wmctrl -lx)
+id=$(printf '%x' $(xdotool getactivewindow))
+active_window_class=$(echo "$apps_table" | awk -v id=$id '$0 ~ id {print $3}')
+
+if [[ "$active_window_class" = "$2" ]];
+then
+    xdotool getactivewindow windowminimize;
+else
+    apps_list=$(echo "$apps_table" | awk '{print $3}');
+    if [[ "$apps_list" =~ "$2" ]];
+    then
+        wmctrl -x -a "$2";
+    else
+        ("$1"&) ;
+    fi
+fi
+{% endhighlight %}
+
+Independent of which script you use, save that script to a convenient location on your harddrive (like ```/usr/local/bin``` or ```/opt/bin```). If you want to call your script just by the name and not by specifying the whole path, make sure to add the location to your PATH. Now we have to make the whole thing executable by running the following in the command-line:
 
 {% highlight bash %}
 chmod +x %path to your script%
