@@ -79,3 +79,5 @@ for line in data_array:
 The key things to keep in mind are:
 1. Nest in the result array (result --> [result])
 2. Initialize your empty array with specified size (np.array([ ]) --> np.empty((0, 100)))
+
+Note: Use this solution only if there is really no other way. If you would use list instead of numpy arrays in this case you could get a huge performance gain for big arrays. Also, try to avoid writing loops when working with numpy. Many things can be solved using some clever slicing and broadcasting tricks.
