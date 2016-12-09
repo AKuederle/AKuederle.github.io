@@ -4,7 +4,7 @@ title: Automate your Paperwork with Latex and Python (Part 1 - POC)
 tags: Latex Python Workflow Productivity
 permalink: Automatization-with-Latex-and-Python-1
 comments: True
-date: 28.5.2015
+date: 27.5.2015
 ---
 
 Many people, who work especially in small businesses, are using Word or other Word-processors to write their invoices, contracts, or applications. This is fine (if you can stand the little annoying things such programs sometimes do), however, they lack the option to really automate repetitive work in any way.
