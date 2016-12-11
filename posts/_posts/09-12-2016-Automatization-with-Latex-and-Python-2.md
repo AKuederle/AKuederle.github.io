@@ -118,6 +118,6 @@ in_file = args['in']
 template_file = args['template']
 {% endhighlight %}
 
-And we are done!! We created a universal LaTex templating script, we can now easily feed with our custom templates using the modified jinja tags. The script can live somewhere in our ```PATH``` and we can call it whenever we need it in one of our projects. The next step would be to allow different input-file formats. For example an excel file, where you have stored your customer information in. If you have specific requirements on how to parse the input files, let me know in the comments and I will try to help you!
+And we are done!! We created a universal LaTex templating script, we can now easily feed with our custom templates using the modified jinja tags. The script can live somewhere in our ```PATH``` and we can call it whenever we need it in one of our projects. The next step would be to allow different input-file formats. For example an excel file, where you have stored your customer information in. If you have specific requirements on how to parse the input files, let me know in the comments and I will try to help you! The full code can be found on [github](https://github.com/AKuederle/Py-Tex-automation-example/tree/p2) as always! 
 
 Thanks for reading and let me know, if you found that short tutorial helpful!
