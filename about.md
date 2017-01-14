@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Why this blog exists!
+title: Why this blog exists...
 permalink: /about/
 ---
 
