@@ -211,3 +211,6 @@ Note, that you need the ``auto.`` prefix!
 A updated version of the whole script based on this idea, can be found [here](https://github.com/AKuederle/IPython-custom-shortcuts/blob/futureproof/custom_shortcuts.js).
 
 I hope you found this little tutorial helpful, and I would really appreciate more input regarding this topic. So, if you happen to know more about IPython's extensions, please leave a comment with resources and suggestions.
+
+
+**Update 2:** This way is not up to date anymore. There is a new (however unstable) way to do that in the upcoming Jupyter 5.0! Read about it [here](http://jupyter-notebook.readthedocs.io/en/latest/extending/keymaps.html)
