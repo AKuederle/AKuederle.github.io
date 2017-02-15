@@ -15,7 +15,7 @@ Inside the loop:
 3. Do the computation
 4. Append the result array
 
-**Note: This Post is now a couple of years old and I some ways, that are for sure better than the one showed here. Actually, the shown solution is very slow, as the array has to be copied after each iteration. Therefore, I would suggest not using the code I will demonstrate in the following. I will leave the post here as one of these "Man you were stupid back then"-reminders. If you came across the same issue, I described above, consider using a simple python list, and converting it to a numpy array at the end (this is way faster!). If you know the exact size of the final array (which I assumed you do not), you can try initializing an empty array with this size first and then replace certain parts by index inside of the loop. I hope that helps, and sorry if that is not the solution you came here for!**
+**NOTE: This Post is now a couple of years old and I found some ways, that are for sure better than the one showed here. Actually, the shown solution is very slow, as the array has to be copied after each iteration. Therefore, I would suggest not using the code I will demonstrate in the following. I will leave the post here as one of these "Man you were stupid back then"-reminders. If you came across the same issue, I described above, consider using a simple python list, and converting it to a numpy array at the end (this is way faster!). If you know the exact size of the final array (which I assumed you do not), you can also try initializing an empty array with this size first and then replace certain parts by index inside of the loop. I hope that helps, and sorry if that is not the solution you came here for!**
 
 Inside a script it would look something like this:
 
