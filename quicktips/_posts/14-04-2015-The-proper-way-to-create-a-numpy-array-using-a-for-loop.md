@@ -6,7 +6,7 @@ permalink: create-numpy-array-with-for-loop
 comments: True
 ---
 
-A typical task you come around when analysing data with Python is to run a computation line or column wise on a numpy array and store the results in a new one.
+A typical task you come around when analyzing data with Python is to run a computation line or column wise on a numpy array and store the results in a new one.
 Ok - sounds not too bad:
 
 1. Initialize an empty array to store the results in
@@ -15,7 +15,10 @@ Inside the loop:
 3. Do the computation
 4. Append the result array
 
+**Note: This Post is now a couple of years old and I some ways, that are for sure better than the one showed here. Actually, the shown solution is very slow, as the array has to be copied after each iteration. Therefore, I would suggest not using the code I will demonstrate in the following. I will leave the post here as one of these "Man you were stupid back then"-reminders. If you came across the same issue, I described above, consider using a simple python list, and converting it to a numpy array at the end (this is way faster!). If you know the exact size of the final array (which I assumed you do not), you can try initializing an empty array with this size first and then replace certain parts by index inside of the loop. I hope that helps, and sorry if that is not the solution you came here for!**
+
 Inside a script it would look something like this:
+
 
 {% highlight python %}
 result_array = np.array([])
@@ -80,4 +83,3 @@ The key things to keep in mind are:
 1. Nest in the result array (result --> [result])
 2. Initialize your empty array with specified size (np.array([ ]) --> np.empty((0, 100)))
 
-Note: Use this solution only if there is really no other way. If you would use list instead of numpy arrays in this case you could get a huge performance gain for big arrays. Also, try to avoid writing loops when working with numpy. Many things can be solved using some clever slicing and broadcasting tricks.
